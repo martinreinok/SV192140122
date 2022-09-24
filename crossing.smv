@@ -193,9 +193,11 @@ MODULE main
 
 
 --// Signals work as expected and warning devices and barriers work as expected
-LTLSPEC G(T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed))
-LTLSPEC G(S2_green -> (W2_active & W1_active))
-LTLSPEC G(S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red)
+LTLSPEC G (T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed))
+LTLSPEC G (S2_green -> (W2_active & W1_active))
+LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red)
+LTLSPEC G ((B1_closed & B2_closed) -> !cars_crossing)
+LTLSPEC !G (cars_crossing & (W2_active & W1_active))
 
 
 --// Trains always make progress
