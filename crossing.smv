@@ -191,7 +191,8 @@ MODULE main
 
 
 --// Signals work as expected & warning devices and barriers work as expected
-LTLSPEC G(S2_red -> !T2_occupied);
+LTLSPEC G(T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed));
+LTLSPEC G(S2_green -> (W2_active & W1_active));
 --LTLSPEC G(S2_green -> F T2_occupied);
 --LTLSPEC G(S2_green -> (W2_active & W1_active & B1_closed & B2_closed));
 
