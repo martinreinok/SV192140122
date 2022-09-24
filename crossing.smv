@@ -1,0 +1,214 @@
+--// ENVIROMENT #####################################################################
+
+
+MODULE Environment(
+         S2_red,S2_green,
+         S3_red,S3_green,
+         W1_active,W2_active,
+         B1_request,B2_request)
+ VAR
+    train: Train(S2_red,S2_green, S3_red,S3_green);
+    cars: Cars(W1_active,W2_active);
+    barrier1: Barrier(B1_request);
+	barrier2: Barrier(B2_request);
+ DEFINE
+    T1_occupied := train.T1_occupied;
+    T2_occupied := train.T2_occupied;
+    T3_occupied := train.T3_occupied;
+    B1_open := barrier1.open;
+	B1_closed := barrier1.closed;
+    B2_open := barrier2.open;
+    B2_closed := barrier2.closed;
+    S4_red := train.S4_red;
+    S4_green := train.S4_green;
+    S1_red := train.S1_red;
+    S1_green := train.S1_green;
+    cars_crossing := cars.cars_crossing;
+
+
+MODULE Cars(W1_active, W2_active)
+	VAR
+		cars_crossing : boolean;
+	ASSIGN
+		init(cars_crossing) := FALSE;
+		next(cars_crossing) := case
+			!W1_active | !W2_active : {TRUE,FALSE};
+			TRUE : FALSE;
+		esac;
+
+
+MODULE Train(S2_red, S2_green, S3_red, S3_green)
+	VAR
+		T0_occupied : boolean;
+		T1_occupied : boolean;
+		T2_occupied : boolean;
+		T3_occupied : boolean;
+		T4_occupied : boolean;
+	DEFINE
+		S1_red := T0_occupied;
+		S1_green := !S1_red;
+		S4_red := T4_occupied;
+		S4_green := !S4_red;
+	ASSIGN
+		init(T0_occupied)   := FALSE;
+		init(T1_occupied)   := FALSE;
+		init(T2_occupied)   := FALSE;
+		init(T3_occupied)   := FALSE;
+		init(T4_occupied)   := FALSE;
+		next(T0_occupied)   := case
+		  !(T0_occupied|T1_occupied|T2_occupied|T3_occupied) : {TRUE,FALSE};
+		  TRUE : FALSE;
+		esac;
+		next(T1_occupied)   := case
+		  T0_occupied : TRUE;
+		  S2_green : FALSE;
+		  TRUE : T1_occupied;
+		esac;
+		next(T2_occupied)   := case
+		  T1_occupied & S2_green : TRUE;
+		  TRUE : FALSE;
+		esac;
+		next(T3_occupied)   := case
+		  T2_occupied : TRUE;
+		  TRUE : FALSE;
+		esac;
+		next(T4_occupied)   := case
+		  T3_occupied : TRUE;
+		  TRUE : FALSE;
+		esac;
+
+
+MODULE Barrier(barrier_request)
+	VAR
+		closed 	: boolean;
+		open 	: boolean;
+	ASSIGN
+		init(open)		:= TRUE;
+		init(closed)	:= FALSE;
+		next(open)		:= case
+		   barrier_request : FALSE;
+		   !barrier_request & !closed : TRUE;
+		   TRUE : TRUE;
+		esac;
+		
+		next(closed)	:= case
+		   barrier_request & !open : TRUE;
+		   TRUE : FALSE;
+		esac;
+
+
+--// INTERLOCKING #####################################################################
+
+
+MODULE Interlocking(
+                     T1_occupied,T2_occupied,T3_occupied,
+                     S1_red,S1_green,
+                     S4_red,S4_green,
+                     B1_open,B1_closed,
+                     B2_open,B2_closed)
+  VAR
+    S2_red : boolean;
+    S3_red : boolean;
+    B_request : boolean;
+    W_active  : boolean;
+  DEFINE
+    S2_green := !S2_red;
+    S3_green := !S3_red;
+    B1_request := B_request;
+    B2_request := B_request;
+    W1_active  := W_active;
+    W2_active  := W_active;
+
+  ASSIGN
+    init(S2_red)        := TRUE;
+    init(S3_red)        := TRUE;
+    init(B_request)     := FALSE;
+    init(W_active)      := FALSE;
+    next(W_active)      := case
+        T1_occupied | T3_occupied : TRUE;
+        W_active & ( T2_occupied | !B1_open | !B2_open ) : TRUE;
+        TRUE : FALSE;
+    esac;
+    
+    next(S2_red)        := case
+        T2_occupied | T3_occupied : TRUE;
+        !B1_closed  : TRUE;
+        TRUE : FALSE;
+    esac;
+    next(S3_red)        := case
+        T1_occupied | T2_occupied : TRUE;
+        !B1_closed  : TRUE;
+        TRUE : FALSE;
+    esac;
+    next(B_request)    := case
+        (T1_occupied | T2_occupied | T3_occupied) & W_active : TRUE;
+        !(T1_occupied | T2_occupied | T3_occupied) : FALSE;
+        TRUE : B_request;
+    esac;
+
+
+--// MAIN #####################################################################
+
+
+MODULE main
+  DEFINE
+    T1_occupied := environment.T1_occupied ;
+    T2_occupied := environment.T2_occupied ;
+    T3_occupied := environment.T3_occupied ;
+    cars_crossing := environment.cars_crossing ;
+    S1_red   := environment.S1_red ;
+    S1_green := environment.S1_green ;
+    S2_red   := interlocking.S2_red ;
+    S2_green := interlocking.S2_green ;
+    S3_red   := interlocking.S3_red ;
+    S3_green := interlocking.S3_green ;
+    S4_red   := environment.S4_red ;
+    S4_green := environment.S4_green ;
+    W1_active  := interlocking.W1_active ;
+    W2_active  := interlocking.W2_active ;
+    B1_open    := environment.B1_open ;
+    B1_closed  := environment.B1_closed ;
+    B1_request := interlocking.B1_request ;
+    B2_open    := environment.B2_open ;
+    B2_closed  := environment.B2_closed ;
+    B2_request := interlocking.B2_request ;
+  VAR
+	environment		: Environment(
+					 S2_red,S2_green,
+					 S3_red,S3_green,
+					 W1_active,W2_active,
+					 B1_request,B2_request);
+    interlocking 	: Interlocking(
+                     next(T1_occupied),next(T2_occupied),next(T3_occupied),
+                     next(S1_red),next(S1_green),
+                     next(S4_red),next(S4_green),
+                     next(B1_open),next(B1_closed),
+                     next(B2_open),next(B2_closed)
+                   );
+
+
+--// PROPS #####################################################################
+
+
+--// Signals work as expected & warning devices and barriers work as expected
+LTLSPEC G(S2_red -> !T2_occupied);
+--LTLSPEC G(S2_green -> F T2_occupied);
+--LTLSPEC G(S2_green -> (W2_active & W1_active & B1_closed & B2_closed));
+
+
+--// Trains always make progress
+--LTLSPEC G(T1_occupied -> F T2_occupied);
+--LTLSPEC G(T1_occupied -> F !T1_occupied);
+--LTLSPEC G(T2_occupied -> F !T2_occupied);
+--LTLSPEC G(T2_occupied -> F T3_occupied);
+
+
+--// Cars always make progress
+--LTLSPEC G(cars_crossing -> F !cars_crossing);
+--LTLSPEC G(!cars_crossing -> F cars_crossing);
+
+
+--// The enviroment evolves as expected
+--LTLSPEC F (!cars_crossing -> !cars_crossing);
+--LTLSPEC F (!T1_occupied & !T2_occupied & !T3_occupied);
+--LTLSPEC F (!T1_occupied -> T1_occupied);
