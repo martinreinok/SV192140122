@@ -8,9 +8,11 @@ lines_to_keep = [
 "train.T4_occupied", 
 "cars.cars_crossing",
 "barrier1.open", 
-"barrier1.closed", 
+"barrier1.closed",
+"environment.S1_red",
 "interlocking.S2_red",
 "interlocking.S3_red",
+"environment.S4_red", 
 "interlocking.B_request", 
 "interlocking.W_active",
 "-> State: "]
