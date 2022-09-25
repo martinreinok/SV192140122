@@ -1,6 +1,16 @@
 # system-validation
 System Validation exercises
 
+## Getting traces
+```
+NuSMV.exe -int file_name
+
+go
+pick_state -r
+simulate -r -k 50
+show_traces -v
+```
+
 ## Part I
 Write a set of properties that validates the correct behaviour 
 
