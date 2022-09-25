@@ -5,14 +5,13 @@ System Validation exercises
 ```
 NuSMV.exe -int file_name
 
-## NuSMV CTL Spec sheet
-(CTL OPERATORS)[https://stackoverflow.com/questions/37516092/how-can-i-change-these-into-ctl-spec-in-nusmv-model]
-
 go
 pick_state -r
 simulate -r -k 50
 show_traces -v
 ```
+## NuSMV CTL Spec sheet
+(CTL OPERATORS)[https://stackoverflow.com/questions/37516092/how-can-i-change-these-into-ctl-spec-in-nusmv-model]
 
 ## Part I
 Write a set of properties that validates the correct behaviour 
