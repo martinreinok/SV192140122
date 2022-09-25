@@ -1,4 +1,12 @@
-lines = [x.strip() for x in open(f"traces-x20.txt")]
+import argparse
+
+parser = argparse.ArgumentParser(description="Select file")
+
+parser.add_argument("-f", "--file", default="traces.txt", dest="selected_file", help="File that contains unsorted traces")
+
+args = parser.parse_args()
+
+lines = [x.strip() for x in open(f"{args.selected_file}")]
 
 lines_to_keep = [
 "train.T0_occupied", 
