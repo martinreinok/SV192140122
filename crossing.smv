@@ -1,4 +1,4 @@
---// ENVIROMENT #####################################################################
+--// ENVIRONMENT #####################################################################
 
 
 MODULE Environment(
@@ -12,9 +12,11 @@ MODULE Environment(
     barrier1: Barrier(B1_request);
 	barrier2: Barrier(B2_request);
  DEFINE
+	T0_occupied := train.T0_occupied;
     T1_occupied := train.T1_occupied;
     T2_occupied := train.T2_occupied;
     T3_occupied := train.T3_occupied;
+	T4_occupied := train.T4_occupied;
     B1_open := barrier1.open;
 	B1_closed := barrier1.closed;
     B2_open := barrier2.open;
@@ -145,7 +147,7 @@ MODULE Interlocking(
     next(B_request)    := case
         (T1_occupied | T2_occupied | T3_occupied) & W_active : TRUE;
         !(T1_occupied | T2_occupied | T3_occupied) : FALSE;
-        TRUE : B_request;
+        TRUE : TRUE;
     esac;
 
 
@@ -154,9 +156,11 @@ MODULE Interlocking(
 
 MODULE main
   DEFINE
+	T0_occupied := environment.T0_occupied ;
     T1_occupied := environment.T1_occupied ;
     T2_occupied := environment.T2_occupied ;
     T3_occupied := environment.T3_occupied ;
+	T4_occupied := environment.T4_occupied ;
     cars_crossing := environment.cars_crossing ;
     S1_red   := environment.S1_red ;
     S1_green := environment.S1_green ;
@@ -193,17 +197,17 @@ MODULE main
 
 
 --// Signals work as expected and warning devices and barriers work as expected
-LTLSPEC G (T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed))
-LTLSPEC G (S2_green -> (W2_active & W1_active))
-LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red)
-LTLSPEC G ((B1_closed & B2_closed) -> !cars_crossing)
-LTLSPEC !G (cars_crossing & (W2_active & W1_active))
-LTLSPEC !G (cars_crossing & (W2_active & W1_active))
-LTLSPEC G (S2_red -> !T2_occupied)
+LTLSPEC G (T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed));
+LTLSPEC G (S2_green -> (W2_active & W1_active & B1_closed & B2_closed));
+LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red);
+LTLSPEC G ((B1_closed | B2_closed) -> !cars_crossing);
+LTLSPEC G (S2_red -> !T2_occupied);
+LTLSPEC !G (cars_crossing & (W2_active & W1_active));
 
 
 --// Trains always make progress
-LTLSPEC G (T1_occupied -> F !T1_occupied)
+LTLSPEC G (T2_occupied -> X !T2_occupied);
+LTLSPEC G (T2_occupied -> X T3_occupied);
 LTLSPEC G (T1_occupied -> F T3_occupied)
 
 
@@ -211,5 +215,7 @@ LTLSPEC G (T1_occupied -> F T3_occupied)
 LTLSPEC G ((cars_crossing -> F !cars_crossing) | (!cars_crossing -> F cars_crossing))
 
 
---// The enviroment evolves as expected
-LTLSPEC !G (T1_occupied & T2_occupied & T3_occupied);
+--// The environment evolves as expected
+LTLSPEC !G (T0_occupied & T1_occupied & T2_occupied & T3_occupied & T4_occupied);
+LTLSPEC !G (T1_occupied & T2_occupied);
+LTLSPEC F (!T0_occupied & !T1_occupied & !T2_occupied & !T3_occupied & !T4_occupied);

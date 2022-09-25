@@ -84,26 +84,11 @@ environment.barrier1.closed = FALSE
 environment.barrier1.open = TRUE
 interlocking.S2_red = TRUE
 interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = TRUE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.7 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = TRUE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
 interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.8 <-
+-> State: 1.7 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -118,7 +103,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.9 <-
+-> State: 1.8 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = TRUE
@@ -133,7 +118,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.10 <-
+-> State: 1.9 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -148,7 +133,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.11 <-
+-> State: 1.10 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -163,13 +148,28 @@ interlocking.B_request = FALSE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = TRUE
--> State: 1.12 <-
+-> State: 1.11 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
 environment.train.T3_occupied = FALSE
 environment.train.T4_occupied = FALSE
 environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = FALSE
+environment.barrier1.open = TRUE
+interlocking.S2_red = TRUE
+interlocking.S3_red = TRUE
+interlocking.B_request = FALSE
+interlocking.W_active = FALSE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.12 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = TRUE
 environment.barrier1.closed = FALSE
 environment.barrier1.open = TRUE
 interlocking.S2_red = TRUE
@@ -209,21 +209,6 @@ interlocking.W_active = FALSE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
 -> State: 1.15 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = FALSE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = TRUE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = FALSE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.16 <-
 environment.train.T0_occupied = TRUE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -238,22 +223,7 @@ interlocking.B_request = FALSE
 interlocking.W_active = FALSE
 environment.S1_red = TRUE
 environment.S4_red = FALSE
--> State: 1.17 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = TRUE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = TRUE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.18 <-
+-> State: 1.16 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -268,7 +238,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.19 <-
+-> State: 1.17 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -283,7 +253,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.20 <-
+-> State: 1.18 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = TRUE
@@ -298,7 +268,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.21 <-
+-> State: 1.19 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -313,7 +283,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.22 <-
+-> State: 1.20 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -328,6 +298,36 @@ interlocking.B_request = FALSE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = TRUE
+-> State: 1.21 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = FALSE
+environment.barrier1.open = TRUE
+interlocking.S2_red = TRUE
+interlocking.S3_red = TRUE
+interlocking.B_request = FALSE
+interlocking.W_active = FALSE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.22 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = FALSE
+environment.barrier1.open = TRUE
+interlocking.S2_red = TRUE
+interlocking.S3_red = TRUE
+interlocking.B_request = FALSE
+interlocking.W_active = FALSE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
 -> State: 1.23 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
@@ -389,36 +389,6 @@ interlocking.W_active = FALSE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
 -> State: 1.27 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = FALSE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = FALSE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.28 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = FALSE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = FALSE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.29 <-
 environment.train.T0_occupied = TRUE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -433,7 +403,7 @@ interlocking.B_request = FALSE
 interlocking.W_active = FALSE
 environment.S1_red = TRUE
 environment.S4_red = FALSE
--> State: 1.30 <-
+-> State: 1.28 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -444,26 +414,11 @@ environment.barrier1.closed = FALSE
 environment.barrier1.open = TRUE
 interlocking.S2_red = TRUE
 interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = TRUE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.31 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = TRUE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
 interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.32 <-
+-> State: 1.29 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -478,7 +433,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.33 <-
+-> State: 1.30 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = TRUE
@@ -493,7 +448,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.34 <-
+-> State: 1.31 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -508,7 +463,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.35 <-
+-> State: 1.32 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -523,7 +478,7 @@ interlocking.B_request = FALSE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = TRUE
--> State: 1.36 <-
+-> State: 1.33 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -538,7 +493,7 @@ interlocking.B_request = FALSE
 interlocking.W_active = FALSE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.37 <-
+-> State: 1.34 <-
 environment.train.T0_occupied = TRUE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -553,7 +508,7 @@ interlocking.B_request = FALSE
 interlocking.W_active = FALSE
 environment.S1_red = TRUE
 environment.S4_red = FALSE
--> State: 1.38 <-
+-> State: 1.35 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -564,26 +519,11 @@ environment.barrier1.closed = FALSE
 environment.barrier1.open = TRUE
 interlocking.S2_red = TRUE
 interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = TRUE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.39 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = TRUE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
 interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.40 <-
+-> State: 1.36 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
@@ -598,7 +538,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.41 <-
+-> State: 1.37 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = TRUE
@@ -608,6 +548,66 @@ environment.cars.cars_crossing = FALSE
 environment.barrier1.closed = TRUE
 environment.barrier1.open = FALSE
 interlocking.S2_red = FALSE
+interlocking.S3_red = TRUE
+interlocking.B_request = TRUE
+interlocking.W_active = TRUE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.38 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = TRUE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = TRUE
+environment.barrier1.open = FALSE
+interlocking.S2_red = TRUE
+interlocking.S3_red = FALSE
+interlocking.B_request = TRUE
+interlocking.W_active = TRUE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.39 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = TRUE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = TRUE
+environment.barrier1.open = FALSE
+interlocking.S2_red = FALSE
+interlocking.S3_red = FALSE
+interlocking.B_request = FALSE
+interlocking.W_active = TRUE
+environment.S1_red = FALSE
+environment.S4_red = TRUE
+-> State: 1.40 <-
+environment.train.T0_occupied = TRUE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = FALSE
+environment.barrier1.open = TRUE
+interlocking.S2_red = TRUE
+interlocking.S3_red = TRUE
+interlocking.B_request = FALSE
+interlocking.W_active = FALSE
+environment.S1_red = TRUE
+environment.S4_red = FALSE
+-> State: 1.41 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = TRUE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = FALSE
+environment.barrier1.open = TRUE
+interlocking.S2_red = TRUE
 interlocking.S3_red = TRUE
 interlocking.B_request = TRUE
 interlocking.W_active = TRUE
@@ -615,6 +615,36 @@ environment.S1_red = FALSE
 environment.S4_red = FALSE
 -> State: 1.42 <-
 environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = TRUE
+environment.train.T2_occupied = FALSE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = TRUE
+environment.barrier1.open = FALSE
+interlocking.S2_red = FALSE
+interlocking.S3_red = TRUE
+interlocking.B_request = TRUE
+interlocking.W_active = TRUE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.43 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = TRUE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = TRUE
+environment.barrier1.open = FALSE
+interlocking.S2_red = FALSE
+interlocking.S3_red = TRUE
+interlocking.B_request = TRUE
+interlocking.W_active = TRUE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.44 <-
+environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
 environment.train.T3_occupied = TRUE
@@ -628,7 +658,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.43 <-
+-> State: 1.45 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -643,7 +673,7 @@ interlocking.B_request = FALSE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = TRUE
--> State: 1.44 <-
+-> State: 1.46 <-
 environment.train.T0_occupied = TRUE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -658,46 +688,16 @@ interlocking.B_request = FALSE
 interlocking.W_active = FALSE
 environment.S1_red = TRUE
 environment.S4_red = FALSE
--> State: 1.45 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = TRUE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = TRUE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
--> State: 1.46 <-
-environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = TRUE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = TRUE
-interlocking.W_active = TRUE
-environment.S1_red = FALSE
-environment.S4_red = FALSE
 -> State: 1.47 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = TRUE
 environment.train.T2_occupied = FALSE
 environment.train.T3_occupied = FALSE
 environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = TRUE
-environment.barrier1.open = FALSE
-interlocking.S2_red = FALSE
+environment.cars.cars_crossing = TRUE
+environment.barrier1.closed = FALSE
+environment.barrier1.open = TRUE
+interlocking.S2_red = TRUE
 interlocking.S3_red = TRUE
 interlocking.B_request = TRUE
 interlocking.W_active = TRUE
@@ -705,8 +705,8 @@ environment.S1_red = FALSE
 environment.S4_red = FALSE
 -> State: 1.48 <-
 environment.train.T0_occupied = FALSE
-environment.train.T1_occupied = FALSE
-environment.train.T2_occupied = TRUE
+environment.train.T1_occupied = TRUE
+environment.train.T2_occupied = FALSE
 environment.train.T3_occupied = FALSE
 environment.train.T4_occupied = FALSE
 environment.cars.cars_crossing = FALSE
@@ -721,6 +721,21 @@ environment.S4_red = FALSE
 -> State: 1.49 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
+environment.train.T2_occupied = TRUE
+environment.train.T3_occupied = FALSE
+environment.train.T4_occupied = FALSE
+environment.cars.cars_crossing = FALSE
+environment.barrier1.closed = TRUE
+environment.barrier1.open = FALSE
+interlocking.S2_red = FALSE
+interlocking.S3_red = TRUE
+interlocking.B_request = TRUE
+interlocking.W_active = TRUE
+environment.S1_red = FALSE
+environment.S4_red = FALSE
+-> State: 1.50 <-
+environment.train.T0_occupied = FALSE
+environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
 environment.train.T3_occupied = TRUE
 environment.train.T4_occupied = FALSE
@@ -733,7 +748,7 @@ interlocking.B_request = TRUE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = FALSE
--> State: 1.50 <-
+-> State: 1.51 <-
 environment.train.T0_occupied = FALSE
 environment.train.T1_occupied = FALSE
 environment.train.T2_occupied = FALSE
@@ -748,18 +763,3 @@ interlocking.B_request = FALSE
 interlocking.W_active = TRUE
 environment.S1_red = FALSE
 environment.S4_red = TRUE
--> State: 1.51 <-
-environment.train.T0_occupied = TRUE
-environment.train.T1_occupied = FALSE
-environment.train.T2_occupied = FALSE
-environment.train.T3_occupied = FALSE
-environment.train.T4_occupied = FALSE
-environment.cars.cars_crossing = FALSE
-environment.barrier1.closed = FALSE
-environment.barrier1.open = TRUE
-interlocking.S2_red = TRUE
-interlocking.S3_red = TRUE
-interlocking.B_request = FALSE
-interlocking.W_active = FALSE
-environment.S1_red = TRUE
-environment.S4_red = FALSE
