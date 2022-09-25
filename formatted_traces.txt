@@ -763,3 +763,1629 @@ interlocking.B_request = FALSE
 interlocking.W_active = FALSE
 environment.S1_red = TRUE
 environment.S4_red = FALSE
+
+
+-- Lewis
+
+  -> State: 1.1 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = FALSE
+
+    environment.cars.cars_crossing = FALSE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_open = TRUE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_request = FALSE
+
+    B2_closed = FALSE
+
+    B2_open = TRUE
+
+    B1_request = FALSE
+
+    B1_closed = FALSE
+
+    B1_open = TRUE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    cars_crossing = FALSE
+
+    T3_occupied = FALSE
+
+    T2_occupied = FALSE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.cars_crossing = FALSE
+
+    environment.B2_open = TRUE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_open = TRUE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.2 <-
+
+    environment.train.T0_occupied = TRUE
+
+    S1_green = FALSE
+
+    S1_red = TRUE
+
+    environment.S1_green = FALSE
+
+    environment.S1_red = TRUE
+
+  -> State: 1.3 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = TRUE
+
+    environment.cars.cars_crossing = TRUE
+
+    interlocking.W_active = TRUE
+
+    W2_active = TRUE
+
+    W1_active = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    cars_crossing = TRUE
+
+    T1_occupied = TRUE
+
+    environment.T1_occupied = TRUE
+
+    environment.cars_crossing = TRUE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = TRUE
+
+    interlocking.W1_active = TRUE
+
+  -> State: 1.4 <-
+
+    environment.cars.cars_crossing = FALSE
+
+    interlocking.B_request = TRUE
+
+    B2_request = TRUE
+
+    B1_request = TRUE
+
+    cars_crossing = FALSE
+
+    environment.cars_crossing = FALSE
+
+    interlocking.B2_request = TRUE
+
+    interlocking.B1_request = TRUE
+
+  -> State: 1.5 <-
+
+    environment.barrier1.B_open = FALSE
+
+    environment.barrier2.B_open = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    B2_open = FALSE
+
+    B1_open = FALSE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    environment.B2_open = FALSE
+
+    environment.B1_open = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.6 <-
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = TRUE
+
+    environment.barrier1.B_closed = TRUE
+
+    environment.barrier2.B_closed = TRUE
+
+    interlocking.S2_red = TRUE
+
+    B2_closed = TRUE
+
+    B1_closed = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    T2_occupied = TRUE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = TRUE
+
+    environment.B2_closed = TRUE
+
+    environment.B1_closed = TRUE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.7 <-
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    B2_request = FALSE
+
+    B1_request = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    T3_occupied = TRUE
+
+    T2_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = TRUE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+  -> State: 1.8 <-
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_closed = FALSE
+
+    B1_closed = FALSE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = FALSE
+
+    S4_red = TRUE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    T3_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = FALSE
+
+    environment.S4_red = TRUE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.9 <-
+
+    environment.train.T0_occupied = TRUE
+
+    environment.train.T4_occupied = FALSE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier2.B_open = TRUE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    B2_open = TRUE
+
+    B1_open = TRUE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    S1_green = FALSE
+
+    S1_red = TRUE
+
+    environment.B2_open = TRUE
+
+    environment.B1_open = TRUE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    environment.S1_green = FALSE
+
+    environment.S1_red = TRUE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.10 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = TRUE
+
+    interlocking.W_active = TRUE
+
+    W2_active = TRUE
+
+    W1_active = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    T1_occupied = TRUE
+
+    environment.T1_occupied = TRUE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = TRUE
+
+    interlocking.W1_active = TRUE
+
+  -> State: 1.11 <-
+
+    interlocking.B_request = TRUE
+
+    B2_request = TRUE
+
+    B1_request = TRUE
+
+    interlocking.B2_request = TRUE
+
+    interlocking.B1_request = TRUE
+
+  -> State: 1.12 <-
+
+    environment.barrier1.B_open = FALSE
+
+    environment.barrier2.B_open = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    B2_open = FALSE
+
+    B1_open = FALSE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    environment.B2_open = FALSE
+
+    environment.B1_open = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.13 <-
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = TRUE
+
+    environment.barrier1.B_closed = TRUE
+
+    environment.barrier2.B_closed = TRUE
+
+    interlocking.S2_red = TRUE
+
+    B2_closed = TRUE
+
+    B1_closed = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    T2_occupied = TRUE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = TRUE
+
+    environment.B2_closed = TRUE
+
+    environment.B1_closed = TRUE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.14 <-
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    B2_request = FALSE
+
+    B1_request = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    T3_occupied = TRUE
+
+    T2_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = TRUE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+  -> State: 1.15 <-
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_closed = FALSE
+
+    B1_closed = FALSE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = FALSE
+
+    S4_red = TRUE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    T3_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = FALSE
+
+    environment.S4_red = TRUE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.16 <-
+
+    environment.train.T0_occupied = TRUE
+
+    environment.train.T4_occupied = FALSE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier2.B_open = TRUE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    B2_open = TRUE
+
+    B1_open = TRUE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    S1_green = FALSE
+
+    S1_red = TRUE
+
+    environment.B2_open = TRUE
+
+    environment.B1_open = TRUE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    environment.S1_green = FALSE
+
+    environment.S1_red = TRUE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.17 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = TRUE
+
+    environment.cars.cars_crossing = TRUE
+
+    interlocking.W_active = TRUE
+
+    W2_active = TRUE
+
+    W1_active = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    cars_crossing = TRUE
+
+    T1_occupied = TRUE
+
+    environment.T1_occupied = TRUE
+
+    environment.cars_crossing = TRUE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = TRUE
+
+    interlocking.W1_active = TRUE
+
+  -> State: 1.18 <-
+
+    environment.cars.cars_crossing = FALSE
+
+    interlocking.B_request = TRUE
+
+    B2_request = TRUE
+
+    B1_request = TRUE
+
+    cars_crossing = FALSE
+
+    environment.cars_crossing = FALSE
+
+    interlocking.B2_request = TRUE
+
+    interlocking.B1_request = TRUE
+
+  -> State: 1.19 <-
+
+    environment.barrier1.B_open = FALSE
+
+    environment.barrier2.B_open = FALSE
+
+    environment.barrier2.B_closed = TRUE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    B2_closed = TRUE
+
+    B2_open = FALSE
+
+    B1_open = FALSE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    environment.B2_open = FALSE
+
+    environment.B2_closed = TRUE
+
+    environment.B1_open = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.20 <-
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = TRUE
+
+    environment.barrier1.B_closed = TRUE
+
+    interlocking.S2_red = TRUE
+
+    B1_closed = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    T2_occupied = TRUE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = TRUE
+
+    environment.B1_closed = TRUE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.21 <-
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    B2_request = FALSE
+
+    B1_request = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    T3_occupied = TRUE
+
+    T2_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = TRUE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+  -> State: 1.22 <-
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_closed = FALSE
+
+    B1_closed = FALSE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = FALSE
+
+    S4_red = TRUE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    T3_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = FALSE
+
+    environment.S4_red = TRUE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.23 <-
+
+    environment.train.T0_occupied = TRUE
+
+    environment.train.T4_occupied = FALSE
+
+    environment.cars.cars_crossing = TRUE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier2.B_open = TRUE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    B2_open = TRUE
+
+    B1_open = TRUE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    S1_green = FALSE
+
+    S1_red = TRUE
+
+    cars_crossing = TRUE
+
+    environment.cars_crossing = TRUE
+
+    environment.B2_open = TRUE
+
+    environment.B1_open = TRUE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    environment.S1_green = FALSE
+
+    environment.S1_red = TRUE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.24 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = TRUE
+
+    environment.cars.cars_crossing = FALSE
+
+    interlocking.W_active = TRUE
+
+    W2_active = TRUE
+
+    W1_active = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    cars_crossing = FALSE
+
+    T1_occupied = TRUE
+
+    environment.T1_occupied = TRUE
+
+    environment.cars_crossing = FALSE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = TRUE
+
+    interlocking.W1_active = TRUE
+
+  -> State: 1.25 <-
+
+    interlocking.B_request = TRUE
+
+    B2_request = TRUE
+
+    B1_request = TRUE
+
+    interlocking.B2_request = TRUE
+
+    interlocking.B1_request = TRUE
+
+  -> State: 1.26 <-
+
+    environment.barrier1.B_open = FALSE
+
+    environment.barrier2.B_open = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    B2_open = FALSE
+
+    B1_open = FALSE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    environment.B2_open = FALSE
+
+    environment.B1_open = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.27 <-
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = TRUE
+
+    environment.barrier1.B_closed = TRUE
+
+    environment.barrier2.B_closed = TRUE
+
+    interlocking.S2_red = TRUE
+
+    B2_closed = TRUE
+
+    B1_closed = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    T2_occupied = TRUE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = TRUE
+
+    environment.B2_closed = TRUE
+
+    environment.B1_closed = TRUE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.28 <-
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    B2_request = FALSE
+
+    B1_request = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    T3_occupied = TRUE
+
+    T2_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = TRUE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+  -> State: 1.29 <-
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_closed = FALSE
+
+    B1_closed = FALSE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = FALSE
+
+    S4_red = TRUE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    T3_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = FALSE
+
+    environment.S4_red = TRUE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.30 <-
+
+    environment.train.T4_occupied = FALSE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier2.B_open = TRUE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    B2_open = TRUE
+
+    B1_open = TRUE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    environment.B2_open = TRUE
+
+    environment.B1_open = TRUE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.31 <-
+
+  -> State: 1.32 <-
+
+  -> State: 1.33 <-
+
+  -> State: 1.34 <-
+
+    environment.cars.cars_crossing = TRUE
+
+    cars_crossing = TRUE
+
+    environment.cars_crossing = TRUE
+
+  -> State: 1.35 <-
+
+  -> State: 1.36 <-
+
+  -> State: 1.37 <-
+
+    environment.train.T0_occupied = TRUE
+
+    S1_green = FALSE
+
+    S1_red = TRUE
+
+    environment.S1_green = FALSE
+
+    environment.S1_red = TRUE
+
+  -> State: 1.38 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = TRUE
+
+    interlocking.W_active = TRUE
+
+    W2_active = TRUE
+
+    W1_active = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    T1_occupied = TRUE
+
+    environment.T1_occupied = TRUE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = TRUE
+
+    interlocking.W1_active = TRUE
+
+  -> State: 1.39 <-
+
+    environment.cars.cars_crossing = FALSE
+
+    interlocking.B_request = TRUE
+
+    B2_request = TRUE
+
+    B1_request = TRUE
+
+    cars_crossing = FALSE
+
+    environment.cars_crossing = FALSE
+
+    interlocking.B2_request = TRUE
+
+    interlocking.B1_request = TRUE
+
+  -> State: 1.40 <-
+
+    environment.barrier1.B_open = FALSE
+
+    environment.barrier2.B_open = FALSE
+
+    environment.barrier2.B_closed = TRUE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    B2_closed = TRUE
+
+    B2_open = FALSE
+
+    B1_open = FALSE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    environment.B2_open = FALSE
+
+    environment.B2_closed = TRUE
+
+    environment.B1_open = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.41 <-
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = TRUE
+
+    environment.barrier1.B_closed = TRUE
+
+    interlocking.S2_red = TRUE
+
+    B1_closed = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    T2_occupied = TRUE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = TRUE
+
+    environment.B1_closed = TRUE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.42 <-
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    B2_request = FALSE
+
+    B1_request = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    T3_occupied = TRUE
+
+    T2_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = TRUE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+  -> State: 1.43 <-
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_closed = FALSE
+
+    B1_closed = FALSE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = FALSE
+
+    S4_red = TRUE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    T3_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = FALSE
+
+    environment.S4_red = TRUE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.44 <-
+
+    environment.train.T0_occupied = TRUE
+
+    environment.train.T4_occupied = FALSE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier2.B_open = TRUE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    B2_open = TRUE
+
+    B1_open = TRUE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    S1_green = FALSE
+
+    S1_red = TRUE
+
+    environment.B2_open = TRUE
+
+    environment.B1_open = TRUE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    environment.S1_green = FALSE
+
+    environment.S1_red = TRUE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.45 <-
+
+    environment.train.T0_occupied = FALSE
+
+    environment.train.T1_occupied = TRUE
+
+    interlocking.W_active = TRUE
+
+    W2_active = TRUE
+
+    W1_active = TRUE
+
+    S1_green = TRUE
+
+    S1_red = FALSE
+
+    T1_occupied = TRUE
+
+    environment.T1_occupied = TRUE
+
+    environment.S1_green = TRUE
+
+    environment.S1_red = FALSE
+
+    interlocking.W2_active = TRUE
+
+    interlocking.W1_active = TRUE
+
+  -> State: 1.46 <-
+
+    interlocking.B_request = TRUE
+
+    B2_request = TRUE
+
+    B1_request = TRUE
+
+    interlocking.B2_request = TRUE
+
+    interlocking.B1_request = TRUE
+
+  -> State: 1.47 <-
+
+    environment.barrier1.B_open = FALSE
+
+    environment.barrier2.B_open = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    B2_open = FALSE
+
+    B1_open = FALSE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    environment.B2_open = FALSE
+
+    environment.B1_open = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.48 <-
+
+    environment.train.T1_occupied = FALSE
+
+    environment.train.T2_occupied = TRUE
+
+    environment.barrier1.B_closed = TRUE
+
+    environment.barrier2.B_closed = TRUE
+
+    interlocking.S2_red = TRUE
+
+    B2_closed = TRUE
+
+    B1_closed = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    T2_occupied = TRUE
+
+    T1_occupied = FALSE
+
+    environment.T1_occupied = FALSE
+
+    environment.T2_occupied = TRUE
+
+    environment.B2_closed = TRUE
+
+    environment.B1_closed = TRUE
+
+    interlocking.S2_green = FALSE
+
+  -> State: 1.49 <-
+
+    environment.train.T2_occupied = FALSE
+
+    environment.train.T3_occupied = TRUE
+
+    interlocking.S3_red = TRUE
+
+    interlocking.B_request = FALSE
+
+    B2_request = FALSE
+
+    B1_request = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    T3_occupied = TRUE
+
+    T2_occupied = FALSE
+
+    environment.T2_occupied = FALSE
+
+    environment.T3_occupied = TRUE
+
+    interlocking.B2_request = FALSE
+
+    interlocking.B1_request = FALSE
+
+    interlocking.S3_green = FALSE
+
+  -> State: 1.50 <-
+
+    environment.train.T3_occupied = FALSE
+
+    environment.train.T4_occupied = TRUE
+
+    environment.barrier1.B_closed = FALSE
+
+    environment.barrier2.B_closed = FALSE
+
+    interlocking.S2_red = FALSE
+
+    interlocking.S3_red = FALSE
+
+    interlocking.W_active = FALSE
+
+    B2_closed = FALSE
+
+    B1_closed = FALSE
+
+    W2_active = FALSE
+
+    W1_active = FALSE
+
+    S4_green = FALSE
+
+    S4_red = TRUE
+
+    S3_green = TRUE
+
+    S3_red = FALSE
+
+    S2_green = TRUE
+
+    S2_red = FALSE
+
+    T3_occupied = FALSE
+
+    environment.T3_occupied = FALSE
+
+    environment.B2_closed = FALSE
+
+    environment.B1_closed = FALSE
+
+    environment.S4_green = FALSE
+
+    environment.S4_red = TRUE
+
+    interlocking.W2_active = FALSE
+
+    interlocking.W1_active = FALSE
+
+    interlocking.S3_green = TRUE
+
+    interlocking.S2_green = TRUE
+
+  -> State: 1.51 <-
+
+    environment.train.T4_occupied = FALSE
+
+    environment.barrier1.B_open = TRUE
+
+    environment.barrier2.B_open = TRUE
+
+    interlocking.S2_red = TRUE
+
+    interlocking.S3_red = TRUE
+
+    B2_open = TRUE
+
+    B1_open = TRUE
+
+    S4_green = TRUE
+
+    S4_red = FALSE
+
+    S3_green = FALSE
+
+    S3_red = TRUE
+
+    S2_green = FALSE
+
+    S2_red = TRUE
+
+    environment.B2_open = TRUE
+
+    environment.B1_open = TRUE
+
+    environment.S4_green = TRUE
+
+    environment.S4_red = FALSE
+
+    interlocking.S3_green = FALSE
+
+    interlocking.S2_green = FALSE
+
