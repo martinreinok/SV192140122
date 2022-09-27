@@ -67,16 +67,16 @@ This was fixed by changing next(open) in BarrierModule:
 specification  G (S2_red -> !T2_occupied)  is false
 
 ### Detected error II:
-specification  G (T2_occupied ->  X T3_occupied)  is false
+specification  G ((W2_active | W1_active) -> !cars_crossing)  is false
 
 ### Detected error III:
 specification  G (T1_occupied ->  F T3_occupied)  is false
 
 ### Detected error IV:
-specification  G (!T1_occupied ->  F T1_occupied)  is false
+specification  G (T1_occupied ->  F !T1_occupied) is false
 
 ### Detected error V:
-specification  G ((W2_active | W1_active) -> !cars_crossing)  is false
+specification  G (T2_occupied ->  X T3_occupied)  is false
 
 
 
