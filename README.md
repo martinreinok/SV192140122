@@ -35,20 +35,20 @@ This was fixed by changing next(S2_red):
 ### Detected error II:
 specification  G (S2_green -> (((W2_active & W1_active) & B1_closed) & B2_closed))  is false
 
-This was fixed by changing next(open) in BarrierModule:  
-  next(open)		:= case
-    barrier_request : FALSE;
-    !barrier_request & !closed : TRUE;
-    TRUE : open;
-  esac;
+This was fixed by changing next(open) in BarrierModule:    
+  next(open)		:= case  
+    barrier_request : FALSE;  
+    !barrier_request & !closed : TRUE;  
+    TRUE : open;  
+  esac;  
   
-  INTO THE FOLLOWING
+  INTO THE FOLLOWING  
   
-  next(open)		:= case
-    barrier_request : FALSE;
-    !barrier_request & !closed : TRUE;
-    TRUE : TRUE;
-  esac;
+  next(open)		:= case  
+    barrier_request : FALSE;  
+    !barrier_request & !closed : TRUE;  
+    TRUE : TRUE;  
+  esac;  
 
 
 
