@@ -13,6 +13,12 @@ show_traces -v
 ## NuSMV CTL Spec sheet
 [CTL OPERATORS](https://stackoverflow.com/questions/37516092/how-can-i-change-these-into-ctl-spec-in-nusmv-model)
 
+## Fairness
+In
+order to force a given process to execute infinitely often, we can use a fairness constraint. A
+fairness constraint restricts the attention of the model checker to only those execution paths
+along which a given formula is true infinitely often.
+
 ## Part I
 Write a set of properties that validates the correct behaviour 
 
