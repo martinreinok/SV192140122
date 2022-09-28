@@ -98,3 +98,5 @@ MODULE Barrier(barrier_request)
 			barrier_request : {TRUE, FALSE};
 			TRUE : FALSE;
 		esac;
+		
+FAIRNESS(closed = FALSE);
