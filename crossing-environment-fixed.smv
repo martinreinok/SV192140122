@@ -95,6 +95,6 @@ MODULE Barrier(barrier_request)
 		esac;
 		
 		next(closed)	:= case
-			barrier_request : TRUE;
+			barrier_request : {TRUE, FALSE};
 			TRUE : FALSE;
 		esac;
