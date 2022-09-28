@@ -62,6 +62,16 @@ This was fixed by changing next(open) in BarrierModule:
     TRUE : TRUE;  
   esac;  
 
+### Detected error III:
+
+S2_green turns true if train is on track T4.  
+
+next(S2_red)        := case  
+    T2_occupied | T3_occupied : TRUE;  
+    B1_open | B2_open : TRUE;  
+    TRUE : FALSE;  
+esac;  
+    
 ## Part III:
 ### Detected error I:
 specification  G (S2_red -> !T2_occupied)  is false
