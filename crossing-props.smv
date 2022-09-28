@@ -26,6 +26,5 @@ LTLSPEC G (S2_green -> X T2_occupied);      --// A train will be on T2 after S2 
 LTLSPEC G ((cars_crossing -> F !cars_crossing) | (!cars_crossing -> F cars_crossing));   
 
 --// The environment evolves as expected
-LTLSPEC !G (T1_occupied & T2_occupied & T3_occupied);   --// CHECK !!!!!
-LTLSPEC !G (T1_occupied & T2_occupied);                 --// CHECK !!!!!
+LTLSPEC !G (T1_occupied & T2_occupied & T3_occupied);  --// There will never be more than one train on the track
 LTLSPEC F (!T1_occupied & !T2_occupied & !T3_occupied); --// At some point the entire track may be clear
