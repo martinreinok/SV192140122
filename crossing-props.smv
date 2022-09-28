@@ -5,6 +5,8 @@
 --// Signals work as expected and warning devices and barriers work as expected
 LTLSPEC G (T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed)); --// Warnings active + barriers closed when train is located on crossing
 LTLSPEC G (S2_green -> (W2_active & W1_active & B1_closed & B2_closed));    --// Warnings active + barriers closed when signal S2 = green
+LTLSPEC G (S2_green -> F T2_occupied);    --// if signal 2 = green eventually train at T2
+LTLSPEC G ((S2_red -> F T1_occupied)  |  (S2_green -> F !T1_occupied));--// if signal 2 = red -> Train waits at T1 & if signal 2 = green -> train will go to T2
 
 --// S1-green implies S1 != red. S2-green implies S2 != red. S3-green implies S3 != red. S4-green implies S4 != red.
 LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red); 
