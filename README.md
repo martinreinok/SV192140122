@@ -40,27 +40,56 @@ Expose and fix the error in crossing-enviroment
 
 ### Detected error I:
 G (S2_red -> !T2_occupied)  is false  (Train is on T2 when S2 is red)  
+NOTE: This change was removed and restructured as Error III  
+```
 This was fixed by changing next(S2_red):  
 * T2_occupied | T3_occupied : TRUE;  
-* T3_occupied : TRUE;  
+* T3_occupied : TRUE; 
+```
 
 ### Detected error II:
 specification  G (S2_green -> (((W2_active & W1_active) & B1_closed) & B2_closed))  is false
 
 This was fixed by changing next(open) in BarrierModule:    
+```
   next(open)		:= case  
     barrier_request : FALSE;  
     !barrier_request & !closed : TRUE;  
     TRUE : open;  
   esac;  
-  
+```  
   INTO THE FOLLOWING  
-  
+```  
   next(open)		:= case  
     barrier_request : FALSE;  
     !barrier_request & !closed : TRUE;  
     TRUE : TRUE;  
   esac;  
+```
+### Detected error III:
+
+S2_green turns true if train is on track T4.  
+```
+LTLSPEC G (S2_green -> X T2_occupied);  
+```
+CHANGED  
+```
+next(S2_red)        := case  
+    T2_occupied | T3_occupied : TRUE;  
+    B1_open | B2_open : TRUE;  
+    TRUE : FALSE;  
+esac;  
+```
+INTO
+```
+next(S2_red)        := case  
+    T2_occupied | T3_occupied : TRUE;  
+    B1_open | B2_open : TRUE;   
+T1_occupied & W_active & B1_closed & B2_closed : FALSE;  
+TRUE : TRUE;  
+    FALSE : TRUE;  
+esac;  
+``` 
 
 ## Part III:
 ### Detected error I:
