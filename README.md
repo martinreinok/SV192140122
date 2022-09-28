@@ -40,9 +40,12 @@ Expose and fix the error in crossing-enviroment
 
 ### Detected error I:
 G (S2_red -> !T2_occupied)  is false  (Train is on T2 when S2 is red)  
+NOTE: This change was removed and restructured as Error III  
+```
 This was fixed by changing next(S2_red):  
 * T2_occupied | T3_occupied : TRUE;  
-* T3_occupied : TRUE;  
+* T3_occupied : TRUE; 
+```
 
 ### Detected error II:
 specification  G (S2_green -> (((W2_active & W1_active) & B1_closed) & B2_closed))  is false
