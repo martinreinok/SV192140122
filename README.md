@@ -69,7 +69,9 @@ This was fixed by changing next(open) in BarrierModule:
 ### Detected error III:
 
 S2_green turns true if train is on track T4.  
-
+```
+LTLSPEC G (S2_green -> X T2_occupied);  
+```
 CHANGED  
 ```
 next(S2_red)        := case  
