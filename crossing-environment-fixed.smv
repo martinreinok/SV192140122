@@ -83,20 +83,37 @@ MODULE Train(S2_red, S2_green, S3_red, S3_green)
 
 MODULE Barrier(barrier_request)
 	VAR
-		closed 	: boolean;
-		open 	: boolean;
+		
+		barrier_status : { barrier_open, barrier_closing, barrier_closed };
+		open   : boolean;
+		closed : boolean;
+		
 	ASSIGN
-		init(open)		:= TRUE;
-		init(closed)	:= FALSE;
-		next(open)		:= case
-			barrier_request : FALSE;
-			!barrier_request & !closed : TRUE;
-			TRUE : TRUE;
+		init(barrier_status) := {barrier_open};
+		init(open) := TRUE;
+		init(closed) := FALSE;
+		
+		next(barrier_status) := case
+			!barrier_request : { barrier_open };
+			barrier_status = barrier_closed : { barrier_closed };
+			barrier_status = barrier_closing : { barrier_closing, barrier_closed };
+			barrier_request : barrier_closing;
+			
 		esac;
 		
-		next(closed)	:= case
-			barrier_request : {TRUE, FALSE};
+		next(open)		:= case
+			barrier_status = barrier_open : TRUE;
+			barrier_status = barrier_closing : TRUE;
+			barrier_status = barrier_closed : FALSE;
 			TRUE : FALSE;
 		esac;
 		
-FAIRNESS(closed = FALSE);
+		next(closed)	:= case
+			barrier_status = barrier_open : FALSE;
+			barrier_status = barrier_closing : FALSE;
+			barrier_status = barrier_closed : TRUE;
+			
+			TRUE : FALSE;
+		esac;
+
+FAIRNESS !(barrier_status = barrier_closing);
