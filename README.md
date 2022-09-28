@@ -92,6 +92,9 @@ esac;
 ``` 
 
 ## Part III:
+
+NOTE: Teachers said cannot describe a liveness property without the "F" using LTL. So only the F porperties can be used in part III.  
+
 ### Detected error I:
 specification  G (S2_red -> !T2_occupied)  is false
 
