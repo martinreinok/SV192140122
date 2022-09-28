@@ -10,7 +10,6 @@ LTLSPEC G (S2_green -> (W2_active & W1_active & B1_closed & B2_closed));    --//
 LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red); 
 
 LTLSPEC G ((B1_closed | B2_closed) -> !cars_crossing); --// If even a single barrier = closed -> cars cannot be crossing.
-LTLSPEC G (S2_red -> !T2_occupied); --// CHECK IF NEEDED!!!!!!!!!
 LTLSPEC G ((W2_active | W1_active) -> X !cars_crossing); --// If even a single warning = active at the next state cars cannot be crossing.
 LTLSPEC G ((W2_active | W1_active) -> F (B1_closed & B2_closed)); --// If even a single warning = active eventually the barries must be closed
 
