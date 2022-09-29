@@ -91,6 +91,68 @@ TRUE : TRUE;
 esac;  
 ``` 
 
+### Detected error IV & Detected error V:
+LTLSPEC G (S2_green -> (W2_active & W1_active & B1_closed & B2_closed));
+LTLSPEC G(B1_closed & B2_closed & T2_occupied -> F S3_green);
+FIXED
+
+CHANGED  
+```
+next(T2_occupied)   := case
+      T1_occupied & S2_green : TRUE;
+      TRUE : FALSE;
+    esac;
+    next(T3_occupied)   := case
+      T2_occupied : TRUE;
+      TRUE : FALSE;
+    esac; 
+```
+INTO
+```
+next(T2_occupied)   := case
+		  T1_occupied & S2_green : TRUE;
+		  T2_occupied & S3_red: TRUE;
+		  TRUE : FALSE;
+		esac;
+		next(T3_occupied)   := case
+		  T2_occupied & S3_green: TRUE;
+		  TRUE : FALSE;
+		esac;
+``` 
+AND CHANGED  
+```
+    next(S2_red)        := case
+        T2_occupied | T3_occupied : TRUE;
+        !B1_closed  : TRUE;
+        TRUE : FALSE;
+    esac;
+    
+    next(S3_red)        := case
+        T1_occupied | T2_occupied : TRUE;
+        !B1_closed  : TRUE;
+        TRUE : FALSE;
+    esac;
+    
+```
+INTO
+```
+    next(S2_red)        := case
+        T2_occupied | T3_occupied : TRUE;
+        B1_open | B2_open : TRUE;
+		T1_occupied & W_active & B1_closed & B2_closed : FALSE;
+		TRUE : TRUE;
+        FALSE : TRUE;
+    esac;
+    
+    next(S3_red)        := case
+        T1_occupied : TRUE;
+        B1_open | B2_open: TRUE;
+        (!B1_open & !B2_open) & T2_occupied: FALSE;
+        TRUE: TRUE;
+    esac;
+    
+``` 
+
 ## Part III:
 
 NOTE: Teachers said cannot describe a liveness property without the "F" using LTL. So only the F porperties can be used in part III.  
