@@ -33,6 +33,6 @@ LTLSPEC G ((cars_crossing -> F !cars_crossing) | (!cars_crossing -> F cars_cross
 
 --// The environment evolves as expected
 LTLSPEC G (S2_green -> F T2_occupied);    --// if signal 2 = green eventually train at T2
-LTLSPEC G(B1_closed & B2_closed & T2_occupied -> F S3_green); --// When barriers are closed and train at T2 eventually train at T2
+LTLSPEC G(B1_closed & B2_closed & T2_occupied -> F S3_green); --// When barriers are closed and train at T2 eventually S3 will be green
 LTLSPEC !G (T1_occupied & T2_occupied & T3_occupied);  --// There will never be more than one train on the track
 LTLSPEC F (!T1_occupied & !T2_occupied & !T3_occupied); --// At some point the entire track may be clear
