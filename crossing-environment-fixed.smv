@@ -69,10 +69,11 @@ MODULE Train(S2_red, S2_green, S3_red, S3_green)
 		esac;
 		next(T2_occupied)   := case
 		  T1_occupied & S2_green : TRUE;
+		  T2_occupied & S3_red: TRUE;
 		  TRUE : FALSE;
 		esac;
 		next(T3_occupied)   := case
-		  T2_occupied : TRUE;
+		  T2_occupied & S3_green: TRUE;
 		  TRUE : FALSE;
 		esac;
 		next(T4_occupied)   := case
@@ -83,37 +84,19 @@ MODULE Train(S2_red, S2_green, S3_red, S3_green)
 
 MODULE Barrier(barrier_request)
 	VAR
-		
-		barrier_status : { barrier_open, barrier_closing, barrier_closed };
-		open   : boolean;
-		closed : boolean;
-		
+		closed 	: boolean;
+		open 	: boolean;
 	ASSIGN
-		init(barrier_status) := {barrier_open};
-		init(open) := TRUE;
-		init(closed) := FALSE;
-		
-		next(barrier_status) := case
-			!barrier_request : { barrier_open };
-			barrier_status = barrier_closed : { barrier_closed };
-			barrier_status = barrier_closing : { barrier_closing, barrier_closed };
-			barrier_request : barrier_closing;
-			
-		esac;
-		
+		init(open)		:= TRUE;
+		init(closed)	:= FALSE;
 		next(open)		:= case
-			barrier_status = barrier_open : TRUE;
-			barrier_status = barrier_closing : TRUE;
-			barrier_status = barrier_closed : FALSE;
-			TRUE : FALSE;
+			barrier_request : FALSE;
+			!barrier_request & !closed : TRUE;
+			TRUE : TRUE;
 		esac;
 		
 		next(closed)	:= case
-			barrier_status = barrier_open : FALSE;
-			barrier_status = barrier_closing : FALSE;
-			barrier_status = barrier_closed : TRUE;
-			
+			barrier_request : TRUE;
 			TRUE : FALSE;
 		esac;
-
-FAIRNESS !(barrier_status = barrier_closing);
+		
