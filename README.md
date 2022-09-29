@@ -157,19 +157,22 @@ INTO
 NOTE: Teachers said cannot describe a liveness property without the "F" using LTL. So only the F porperties can be used in part III.  
 
 ### Detected error I:
-specification  G (S2_green -> X T2_occupied)  is false
+specification  G ((W2_active | W1_active) ->  F (B1_closed & B2_closed))  is false
 
 ### Detected error II:
-specification  G ((W2_active | W1_active) -> F (B1_closed) & B2_closed)  is false
+specification  G (T2_occupied ->  X T3_occupied)  is false
 
 ### Detected error III:
 specification  G (T1_occupied ->  F T3_occupied)  is false
 
 ### Detected error IV:
-specification  G (T1_occupied ->  F !T1_occupied) is false
+specification  G (T1_occupied ->  F !T1_occupied)  is false
 
 ### Detected error V:
-specification  G (T2_occupied ->  X T3_occupied)  is false
+specification  G (S2_green ->  X T2_occupied)  is false
+
+### Detected error VI:
+specification  G (S2_green ->  F T2_occupied)  is false
 
 
 
