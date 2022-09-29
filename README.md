@@ -141,7 +141,6 @@ INTO
         B1_open | B2_open : TRUE;
 	T1_occupied & W_active & B1_closed & B2_closed : FALSE;
 	TRUE : TRUE;
-        FALSE : TRUE;
     esac;
     
     next(S3_red)        := case
