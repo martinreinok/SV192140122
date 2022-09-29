@@ -1,0 +1,120 @@
+--// Students:
+--// Menno Scholten (2878216)
+--// Martin Reinok
+
+MODULE Environment(
+         S2_red,S2_green,
+         S3_red,S3_green,
+         W1_active,W2_active,
+         B1_request,B2_request)
+ VAR
+    train: Train(S2_red,S2_green, S3_red,S3_green);
+    cars: Cars(W1_active,W2_active);
+    barrier1: Barrier(B1_request);
+	barrier2: Barrier(B2_request);
+ DEFINE
+	T0_occupied := train.T0_occupied;
+    T1_occupied := train.T1_occupied;
+    T2_occupied := train.T2_occupied;
+    T3_occupied := train.T3_occupied;
+	T4_occupied := train.T4_occupied;
+    B1_open := barrier1.open;
+	B1_closed := barrier1.closed;
+    B2_open := barrier2.open;
+    B2_closed := barrier2.closed;
+    S4_red := train.S4_red;
+    S4_green := train.S4_green;
+    S1_red := train.S1_red;
+    S1_green := train.S1_green;
+    cars_crossing := cars.cars_crossing;
+
+
+MODULE Cars(W1_active, W2_active)
+	VAR
+		cars_crossing : boolean;
+	ASSIGN
+		init(cars_crossing) := FALSE;
+		next(cars_crossing) := case
+			!W1_active | !W2_active : {TRUE, FALSE};
+			TRUE : FALSE;
+		esac;
+
+
+MODULE Train(S2_red, S2_green, S3_red, S3_green)
+	VAR
+		T0_occupied : boolean;
+		T1_occupied : boolean;
+		T2_occupied : boolean;
+		T3_occupied : boolean;
+		T4_occupied : boolean;
+	DEFINE
+		S1_red := T0_occupied;
+		S1_green := !S1_red;
+		S4_red := T4_occupied;
+		S4_green := !S4_red;
+	ASSIGN
+		init(T0_occupied)   := FALSE;
+		init(T1_occupied)   := FALSE;
+		init(T2_occupied)   := FALSE;
+		init(T3_occupied)   := FALSE;
+		init(T4_occupied)   := FALSE;
+		next(T0_occupied)   := case
+		  !(T0_occupied|T1_occupied|T2_occupied|T3_occupied) : {TRUE,FALSE};
+		  TRUE : FALSE;
+		esac;
+		next(T1_occupied)   := case
+		  T0_occupied : TRUE;
+		  S2_green : FALSE;
+		  TRUE : T1_occupied;
+		esac;
+		next(T2_occupied)   := case
+		  T1_occupied & S2_green : TRUE;
+		  T2_occupied & S3_red: TRUE;
+		  TRUE : FALSE;
+		esac;
+		next(T3_occupied)   := case
+		  T2_occupied & S3_green: TRUE;
+		  TRUE : FALSE;
+		esac;
+		next(T4_occupied)   := case
+		  T3_occupied : TRUE;
+		  TRUE : FALSE;
+		esac;
+
+
+MODULE Barrier(barrier_request)
+	VAR
+		
+		barrier_status : { barrier_open, barrier_closing, barrier_closed };
+		open   : boolean;
+		closed : boolean;
+		
+	ASSIGN
+		init(barrier_status) := {barrier_open};
+		init(open) := TRUE;
+		init(closed) := FALSE;
+		
+		next(barrier_status) := case
+			!barrier_request : { barrier_open };
+			barrier_status = barrier_closed : { barrier_closed };
+			barrier_status = barrier_closing : { barrier_closing, barrier_closed };
+			barrier_request : barrier_closing;
+			
+		esac;
+		
+		next(open)		:= case
+			barrier_status = barrier_open : TRUE;
+			barrier_status = barrier_closing : TRUE;
+			barrier_status = barrier_closed : FALSE;
+			TRUE : FALSE;
+		esac;
+		
+		next(closed)	:= case
+			barrier_status = barrier_open : FALSE;
+			barrier_status = barrier_closing : FALSE;
+			barrier_status = barrier_closed : TRUE;
+			
+			TRUE : FALSE;
+		esac;
+
+FAIRNESS !(barrier_status = barrier_closing);
