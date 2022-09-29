@@ -139,8 +139,8 @@ INTO
     next(S2_red)        := case
         T2_occupied | T3_occupied : TRUE;
         B1_open | B2_open : TRUE;
-		T1_occupied & W_active & B1_closed & B2_closed : FALSE;
-		TRUE : TRUE;
+	T1_occupied & W_active & B1_closed & B2_closed : FALSE;
+	TRUE : TRUE;
         FALSE : TRUE;
     esac;
     
