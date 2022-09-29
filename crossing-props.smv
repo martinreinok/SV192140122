@@ -3,17 +3,18 @@
 --// Martin Reinok
 
 --// Signals work as expected and warning devices and barriers work as expected
-LTLSPEC G (T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed)); --// Warnings active + barriers closed when train is located on crossing
-LTLSPEC G (S2_green -> (W2_active & W1_active & B1_closed & B2_closed));    --// Warnings active + barriers closed when signal S2 = green
-LTLSPEC G (S2_green -> F T2_occupied);    --// if signal 2 = green eventually train at T2
-LTLSPEC G ((S2_red -> F T1_occupied)  |  (S2_green -> F !T1_occupied));--// if signal 2 = red -> Train waits at T1
-
---// S1-green implies S1 != red. S2-green implies S2 != red. S3-green implies S3 != red. S4-green implies S4 != red.
-LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red); 
-
-LTLSPEC G ((B1_closed | B2_closed) -> !cars_crossing); --// If even a single barrier = closed -> cars cannot be crossing.
 LTLSPEC G ((W2_active | W1_active) -> X !cars_crossing); --// If even a single warning = active at the next state cars cannot be crossing.
 LTLSPEC G ((W2_active | W1_active) -> F (B1_closed & B2_closed)); --// If even a single warning = active eventually the barries must be closed
+LTLSPEC G ((B1_closed | B2_closed) -> !cars_crossing); --// If even a single barrier = closed -> cars cannot be crossing.
+LTLSPEC G (T2_occupied -> (W2_active & W1_active & B1_closed & B2_closed)); --// Warnings active + barriers closed when train is located on crossing
+LTLSPEC G (S2_green -> (W2_active & W1_active & B1_closed & B2_closed));    --// When signal s2 = green -> ALL warnings + barriers must be active
+LTLSPEC G ((!W2_active | !W1_active | !B1_closed | !B2_closed) ->  !S2_green);    --// A single warning or barrier not active then signal S2 != green
+LTLSPEC G (B1_closed -> B2_closed);     --// both barriers should be closed at the same time.
+LTLSPEC G (B2_closed -> B1_closed);     --// both barriers should be closed at the same time.
+LTLSPEC G (S2_green -> F T2_occupied);    --// if signal 2 = green eventually train at T2
+LTLSPEC G ((S2_red -> F T1_occupied)  |  (S2_green -> F !T1_occupied));--// if signal 2 = red -> Train waits at T1
+        --// S1-green implies S1 != red. S2-green implies S2 != red. S3-green implies S3 != red. S4-green implies S4 != red.
+LTLSPEC G (S1_green -> !S1_red & S2_green -> !S2_red & S3_green -> !S3_red & S4_green -> !S4_red); 
 
 --// Trains always make progress
 LTLSPEC G (T2_occupied -> X !T2_occupied);  --// Train cannot stop on T2
@@ -23,9 +24,10 @@ LTLSPEC G (T1_occupied -> F !T1_occupied);  --// A train will not stay at T1
 LTLSPEC G (S2_green -> X T2_occupied);      --// A train will be on T2 after S2 is green
 
 --// Cars always make progress
---// If cars are crossing eventually no cars will be crossing AND if no cars are crossing eventually cars are crossing.
+        --// If cars are crossing eventually no cars will be crossing AND if no cars are crossing eventually cars are crossing.
 LTLSPEC G ((cars_crossing -> F !cars_crossing) | (!cars_crossing -> F cars_crossing));   
 
 --// The environment evolves as expected
+LTLSPEC G(B1_closed & B2_closed & T2_occupied -> F S3_green); --// When barriers are closed and train at T2 eventually train at T2
 LTLSPEC !G (T1_occupied & T2_occupied & T3_occupied);  --// There will never be more than one train on the track
 LTLSPEC F (!T1_occupied & !T2_occupied & !T3_occupied); --// At some point the entire track may be clear
