@@ -5,22 +5,46 @@ IMPORTS{
 }
 
 GLOBAL{
+
+	VARIABLES{
+		Clock dataDelay = new Clock();
+	}
+
 	EVENTS{
 		addGrade(Course c, int grade) = {c.addGrade(arg1, grade)}
+
+		addGradeUpdated() = {*.updateStudentCredits()}
+
+		dataDelayAt5() = {dataDelay@5}
 	}
 
 	PROPERTY prop1 {
 		STATES{
 			BAD{badGrade }
 			NORMAL{okGrade}
-			STARTING{noGrade {System.out.println("Started");}}
+			STARTING{noGrade {System.out.println("Started add grade Property");}}
 		}
 		
 		TRANSITIONS{
-			noGrade -> badGrade [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
-			okGrade -> badGrade [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
+			noGrade -> badGrade [addGrade() \ grade > 10 || grade < 1 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
+			okGrade -> badGrade [addGrade() \ grade > 10 || grade < 1 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
 			noGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + c.getCourseCode());]
 			okGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + c.getCourseCode());]
+		}
+	}
+
+	PROPERTY prop3 {
+		STATES {
+			BAD{badDelay}
+			NORMAL{okDelay delayCount}
+			STARTING{startDelay {System.out.println("Started data delay Property");}}
+		}
+
+		TRANSITIONS {
+			startDelay -> delayCount [addGrade() \\ dataDelay.reset();]
+			delayCount -> badDelay [dataDelayAt5() \\ System.out.println("Bad delay time! Time more than 5 seconds");]
+			delayCount -> okDelay [addGradeUpdated()]
+			okDelay -> delayCount [addGrade() \\ dataDelay.reset();]			
 		}
 	}
 
@@ -37,7 +61,7 @@ GLOBAL{
 		PROPERTY prop2 {
 			STATES {
 				BAD {badState}
-				STARTING {okCredits {System.out.println("Started");}}
+				STARTING {okCredits {System.out.println("Started credit Property");}}
 			}
 
 			TRANSITIONS {
@@ -46,5 +70,7 @@ GLOBAL{
 			}
 		}
 	}
+
+	
 	
 }
