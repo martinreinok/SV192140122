@@ -1,0 +1,28 @@
+IMPORTS{
+import gradeAdministration.Course;
+import gradeAdministration.Main;
+import gradeAdministration.Student;
+}
+
+GLOBAL{
+	EVENTS{
+		programRun() = {*.run()}
+		addCourse() = {*.addCourse()}
+		addGrade(Course a, int grade) = {a.addGrade(arg1, grade)}
+	}
+
+	PROPERTY state {
+		STATES{
+			BAD{grade_error {}}
+			NORMAL{normal}
+			STARTING{starting {System.out.println("Started");}}
+		}
+		
+		TRANSITIONS{
+			starting -> normal [programRun() \\ System.out.println("Normal operation");]
+			normal -> normal [addCourse() \\ System.out.println("Course Added!");]
+			normal -> normal [addGrade() \ grade <= 9 && grade >= 2 \ System.out.println("Grade Added: " + grade + " Course: " + a);]
+			normal -> grade_error [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course: " + a);]
+		}
+	}
+}
