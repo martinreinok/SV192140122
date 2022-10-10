@@ -1,0 +1,4 @@
+Started
+[state]AUTOMATON::> state() STATE::>starting
+Normal operation
+[state]MOVED ON METHODCALL: void gradeAdministration.Main.run() TO STATE::> normal
