@@ -1,34 +1,50 @@
 IMPORTS{
-import gradeAdministration.Course;
-import gradeAdministration.Main;
-import gradeAdministration.Student;
+	import gradeAdministration.Course;
+	import gradeAdministration.Main;
+	import gradeAdministration.Student;
 }
 
 GLOBAL{
 	EVENTS{
-		programRun() = {*.run()}
-		addCourse() = {*.addCourse()}
-		addGrade(Course courseInfo, int grade) = {courseInfo.addGrade(arg1, grade)}
-
-		addCredits(Student studentInfo, double credits) = {studentInfo.addCredits(credits)}
-		setCredits(Student studentInfo, double credits) = {studentInfo.setCredits(credits)}
-		changeCredits() = {addCredits|setCredits}
-		
+		addGrade(Course c, int grade) = {c.addGrade(arg1, grade)}
 	}
 
-	PROPERTY state {
+	PROPERTY prop1 {
 		STATES{
-			BAD{grade_error {} credits_error {}}
-			NORMAL{normal}
-			STARTING{starting {System.out.println("Started");}}
+			BAD{badGrade }
+			NORMAL{okGrade}
+			STARTING{noGrade {System.out.println("Started");}}
 		}
 		
 		TRANSITIONS{
-			starting -> normal [programRun() \\ System.out.println("Normal operation");]
-			normal -> normal [addCourse() \\ System.out.println("Course Added!");]
-			normal -> normal [addGrade() \ grade <= 9 && grade >= 2 \ System.out.println("Grade Added: " + grade + " Course: \n" + courseInfo);]
-			normal -> grade_error [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course: \n" + courseInfo);]
-			normal -> credits_error [changeCredits() \ credits < 0 \ System.out.println("Credits are less than 0: " + credits + " Student: \n" + studentInfo);]
+			noGrade -> badGrade [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
+			okGrade -> badGrade [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
+			noGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + c.getCourseCode());]
+			okGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + c.getCourseCode());]
 		}
 	}
+
+	FOREACH (Student s) {
+		EVENTS {
+			addCredits(Student s1, double credits) = {s1.addCredits(credits)} where {s = s1;}
+				
+			setCredits(Student s1, double credits) = {s1.setCredits(credits)} where {s = s1;}
+				
+			changeCredits() = {addCredits|setCredits}
+
+		}
+
+		PROPERTY prop2 {
+			STATES {
+				BAD {badState}
+				STARTING {okCredits {System.out.println("Started");}}
+			}
+
+			TRANSITIONS {
+				okCredits -> badState [changeCredits() \ credits < 0 \ System.out.println("Bad Credits! Credits less than 0. Amount: " + credits + " Student: " + s);]
+				okCredits -> okCredits [changeCredits() \ credits >= 0 \ System.out.println("Credits amount: " + credits + " Student: " + s);]
+			}
+		}
+	}
+	
 }
