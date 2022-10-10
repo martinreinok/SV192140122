@@ -1,11 +1,12 @@
 digraph _logic_state {
 rankdir=LR;
 node [shape = circle]; normal starting;
-node [shape = octagon]; grade_error;
+node [shape = octagon]; grade_error credits_error;
 node [shape = point]; _s_s;
 _s_s -> starting;
 normal -> normal [ label = "(1) addCourse\\\\System . out . println ( \" Course Added! \" ) ; "];
-normal -> normal [ label = "(2) addGrade\\grade <= 9 && grade >= 2 \\System . out . println ( \" Grade Added:  \" + grade + \"  Course:  \" + a ) ; "];
-normal -> grade_error [ label = "(3) addGrade\\grade > 9 || grade < 2 \\System . out . println ( \" Grade error:  \" + grade + \"  Course:  \" + a ) ; "];
+normal -> normal [ label = "(2) addGrade\\grade <= 9 && grade >= 2 \\System . out . println ( \" Grade Added:  \" + grade + \"  Course: \n \" + courseInfo ) ; "];
+normal -> grade_error [ label = "(3) addGrade\\grade > 9 || grade < 2 \\System . out . println ( \" Grade error:  \" + grade + \"  Course: \n \" + courseInfo ) ; "];
+normal -> credits_error [ label = "(4) changeCredits\\credits < 0 \\System . out . println ( \" Credits are less than 0:  \" + credits + \"  Student: \n \" + studentInfo ) ; "];
 starting -> normal [ label = "(1) programRun\\\\System . out . println ( \" Normal operation \" ) ; "];
 }

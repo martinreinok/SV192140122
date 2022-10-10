@@ -8,12 +8,17 @@ GLOBAL{
 	EVENTS{
 		programRun() = {*.run()}
 		addCourse() = {*.addCourse()}
-		addGrade(Course a, int grade) = {a.addGrade(arg1, grade)}
+		addGrade(Course courseInfo, int grade) = {courseInfo.addGrade(arg1, grade)}
+
+		addCredits(Student studentInfo, double credits) = {studentInfo.addCredits(credits)}
+		setCredits(Student studentInfo, double credits) = {studentInfo.setCredits(credits)}
+		changeCredits() = {addCredits|setCredits}
+		
 	}
 
 	PROPERTY state {
 		STATES{
-			BAD{grade_error {}}
+			BAD{grade_error {} credits_error {}}
 			NORMAL{normal}
 			STARTING{starting {System.out.println("Started");}}
 		}
@@ -21,8 +26,9 @@ GLOBAL{
 		TRANSITIONS{
 			starting -> normal [programRun() \\ System.out.println("Normal operation");]
 			normal -> normal [addCourse() \\ System.out.println("Course Added!");]
-			normal -> normal [addGrade() \ grade <= 9 && grade >= 2 \ System.out.println("Grade Added: " + grade + " Course: " + a);]
-			normal -> grade_error [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course: " + a);]
+			normal -> normal [addGrade() \ grade <= 9 && grade >= 2 \ System.out.println("Grade Added: " + grade + " Course: \n" + courseInfo);]
+			normal -> grade_error [addGrade() \ grade > 9 || grade < 2 \ System.out.println("Grade error: " + grade + " Course: \n" + courseInfo);]
+			normal -> credits_error [changeCredits() \ credits < 0 \ System.out.println("Credits are less than 0: " + credits + " Student: \n" + studentInfo);]
 		}
 	}
 }

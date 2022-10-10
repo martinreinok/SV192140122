@@ -27,8 +27,10 @@ _cls_GradeAdministration0_instances.put(root, root);
 }
 
 _cls_GradeAdministration0 parent; //to remain null - this class does not have a parent!
-public static Course a;
+public static double credits;
+public static Student studentInfo;
 public static int grade;
+public static Course courseInfo;
 int no_automata = 1;
 
 public static void initialize(){}
@@ -90,7 +92,7 @@ else if (no_automata < 0)
 }catch(Exception ex){ex.printStackTrace();}
 }
 
-int _state_id_state = 2;
+int _state_id_state = 3;
 
 public void _performLogic_state(String _info, int... _event) {
 
@@ -98,34 +100,41 @@ _cls_GradeAdministration0.pw.println("[state]AUTOMATON::> state("+") STATE::>"+ 
 _cls_GradeAdministration0.pw.flush();
 
 if (0==1){}
-else if (_state_id_state==1){
+else if (_state_id_state==2){
 		if (1==0){}
 		else if ((_occurredEvent(_event,2/*addCourse*/))){
 		_cls_GradeAdministration0.pw .println ("Course Added!");
 
-		_state_id_state = 1;//moving to state normal
+		_state_id_state = 2;//moving to state normal
 		_goto_state(_info);
 		}
 		else if ((_occurredEvent(_event,4/*addGrade*/)) && (grade <=9 &&grade >=2 )){
-		_cls_GradeAdministration0.pw .println ("Grade Added: "+grade +" Course: "+a );
+		_cls_GradeAdministration0.pw .println ("Grade Added: "+grade +" Course: \n"+courseInfo );
 
-		_state_id_state = 1;//moving to state normal
+		_state_id_state = 2;//moving to state normal
 		_goto_state(_info);
 		}
 		else if ((_occurredEvent(_event,4/*addGrade*/)) && (grade >9 ||grade <2 )){
-		_cls_GradeAdministration0.pw .println ("Grade error: "+grade +" Course: "+a );
+		_cls_GradeAdministration0.pw .println ("Grade error: "+grade +" Course: \n"+courseInfo );
 
 		_state_id_state = 0;//moving to state grade_error
 
 		_goto_state(_info);
 		}
+		else if ((_occurredEvent(_event,10/*changeCredits*/)) && (credits <0 )){
+		_cls_GradeAdministration0.pw .println ("Credits are less than 0: "+credits +" Student: \n"+studentInfo );
+
+		_state_id_state = 1;//moving to state credits_error
+
+		_goto_state(_info);
+		}
 }
-else if (_state_id_state==2){
+else if (_state_id_state==3){
 		if (1==0){}
 		else if ((_occurredEvent(_event,0/*programRun*/))){
 		_cls_GradeAdministration0.pw .println ("Normal operation");
 
-		_state_id_state = 1;//moving to state normal
+		_state_id_state = 2;//moving to state normal
 		_goto_state(_info);
 		}
 }
@@ -138,9 +147,10 @@ _cls_GradeAdministration0.pw.flush();
 
 public String _string_state(int _state_id, int _mode){
 switch(_state_id){
-case 1: if (_mode == 0) return "normal"; else return "normal";
+case 2: if (_mode == 0) return "normal"; else return "normal";
 case 0: if (_mode == 0) return "grade_error"; else return "!!!SYSTEM REACHED BAD STATE!!! grade_error "+new _BadStateExceptionGradeAdministration().toString()+" ";
-case 2: if (_mode == 0) return "starting"; else return "starting";
+case 1: if (_mode == 0) return "credits_error"; else return "!!!SYSTEM REACHED BAD STATE!!! credits_error "+new _BadStateExceptionGradeAdministration().toString()+" ";
+case 3: if (_mode == 0) return "starting"; else return "starting";
 default: return "!!!SYSTEM REACHED AN UNKNOWN STATE!!!";
 }
 }
