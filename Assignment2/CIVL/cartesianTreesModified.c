@@ -45,9 +45,7 @@ int minElementIndex(int inorder[], int start, int end) {
 		}
 	}
 	$assume(start+1 <= end);
-	$for(int j :start+1 .. end) {
-		$assert(inorder[minIndex] <= inorder[j], "Value at minIndex: %d is not the smallest value in tree: %d", inorder[minIndex], inorder[j]);
-	}	
+	$assert($forall(int j : start + 1 .. end) (inorder[minIndex] <= inorder[j]));	
 	return minIndex;
 }
 
