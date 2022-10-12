@@ -1,0 +1,11 @@
+digraph _logic_gradingSystem {
+rankdir=LR;
+node [shape = circle]; okGrade noGrade;
+node [shape = octagon]; badGrade;
+node [shape = point]; _s_s;
+_s_s -> noGrade;
+noGrade -> badGrade [ label = "(1) addGrade\\grade > 10 || grade < 1 \\System . out . println ( \" Grade error:  \" + grade + \"  Course code:  \" + course . getCourseCode ( ) ) ; "];
+noGrade -> okGrade [ label = "(2) addGrade\\\\System . out . println ( \" Grade Added:  \" + grade + \"  Course code:  \" + course . getCourseCode ( ) ) ; "];
+okGrade -> badGrade [ label = "(1) addGrade\\grade > 10 || grade < 1 \\System . out . println ( \" Grade error:  \" + grade + \"  Course code:  \" + course . getCourseCode ( ) ) ; "];
+okGrade -> okGrade [ label = "(2) addGrade\\\\System . out . println ( \" Grade Added:  \" + grade + \"  Course code:  \" + course . getCourseCode ( ) ) ; "];
+}

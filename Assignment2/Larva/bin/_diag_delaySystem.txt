@@ -1,0 +1,11 @@
+digraph _logic_delaySystem {
+rankdir=LR;
+node [shape = circle]; okDelay delayCount startDelay;
+node [shape = octagon]; badDelay;
+node [shape = point]; _s_s;
+_s_s -> startDelay;
+delayCount -> badDelay [ label = "(1) dataDelayAt5\\\\System . out . println ( \" Bad delay time! Time more than 5 seconds \" ) ; "];
+delayCount -> okDelay [ label = "(2) addGradeUpdated"];
+startDelay -> delayCount [ label = "(1) addGrade\\\\dataDelay . reset ( ) ; "];
+okDelay -> delayCount [ label = "(1) addGrade\\\\dataDelay . reset ( ) ; "];
+}

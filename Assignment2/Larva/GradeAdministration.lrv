@@ -11,33 +11,31 @@ GLOBAL{
 	}
 
 	EVENTS{
-		addGrade(Course c, int grade) = {c.addGrade(arg1, grade)}
-
+		addGrade(Course course, int grade) = {course.addGrade(arg1, grade)}
 		addGradeUpdated() = {*.updateStudentCredits()}
-
 		dataDelayAt5() = {dataDelay@5}
 	}
 
-	PROPERTY prop1 {
+	PROPERTY gradingSystem {
 		STATES{
-			BAD{badGrade }
-			NORMAL{okGrade}
-			STARTING{noGrade {System.out.println("Started add grade Property");}}
+			BAD{badGrade {}}
+			NORMAL{okGrade {}}
+			STARTING{noGrade {System.out.println("Started gradingSystem");}}
 		}
 		
 		TRANSITIONS{
-			noGrade -> badGrade [addGrade() \ grade > 10 || grade < 1 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
-			okGrade -> badGrade [addGrade() \ grade > 10 || grade < 1 \ System.out.println("Grade error: " + grade + " Course code: " + c.getCourseCode());]
-			noGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + c.getCourseCode());]
-			okGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + c.getCourseCode());]
+			noGrade -> badGrade [addGrade() \ grade > 10 || grade < 1 \ System.out.println("Grade error: " + grade + " Course code: " + course.getCourseCode());]
+			okGrade -> badGrade [addGrade() \ grade > 10 || grade < 1 \ System.out.println("Grade error: " + grade + " Course code: " + course.getCourseCode());]
+			noGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + course.getCourseCode());]
+			okGrade -> okGrade [addGrade() \\ System.out.println("Grade Added: " + grade + " Course code: " + course.getCourseCode());]
 		}
 	}
 
-	PROPERTY prop3 {
+	PROPERTY delaySystem {
 		STATES {
 			BAD{badDelay}
 			NORMAL{okDelay delayCount}
-			STARTING{startDelay {System.out.println("Started data delay Property");}}
+			STARTING{startDelay {System.out.println("Started delaySystem");}}
 		}
 
 		TRANSITIONS {
@@ -51,17 +49,15 @@ GLOBAL{
 	FOREACH (Student s) {
 		EVENTS {
 			addCredits(Student s1, double credits) = {s1.addCredits(credits)} where {s = s1;}
-				
 			setCredits(Student s1, double credits) = {s1.setCredits(credits)} where {s = s1;}
-				
 			changeCredits() = {addCredits|setCredits}
 
 		}
 
-		PROPERTY prop2 {
+		PROPERTY creditsSystem {
 			STATES {
 				BAD {badState}
-				STARTING {okCredits {System.out.println("Started credit Property");}}
+				STARTING {okCredits {System.out.println("Started creditsSystem");}}
 			}
 
 			TRANSITIONS {

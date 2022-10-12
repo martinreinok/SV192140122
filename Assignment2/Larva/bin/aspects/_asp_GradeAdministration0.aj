@@ -18,59 +18,38 @@ if (!initialized){
 }
 }
 
-before ( int grade,Course courseInfo) : (call(* Course.addGrade(..)) && target(courseInfo) && args(*,grade) && !cflow(adviceexecution())) {
+before ( int grade,Course course) : (call(* Course.addGrade(..)) && target(course) && args(*,grade) && !cflow(adviceexecution())) {
 
 synchronized(_asp_GradeAdministration0.lock){
 
 _cls_GradeAdministration0 _cls_inst = _cls_GradeAdministration0._get_cls_GradeAdministration0_inst();
 _cls_inst.grade = grade;
-_cls_inst.courseInfo = courseInfo;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 4/*addGrade*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 4/*addGrade*/);
+_cls_inst.course = course;
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 0/*addGrade*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 0/*addGrade*/);
 }
 }
 
-before () : (call(* *.addCourse(..)) && !cflow(adviceexecution())) {
+before () : (call(* *.updateStudentCredits(..)) && !cflow(adviceexecution())) {
 
 synchronized(_asp_GradeAdministration0.lock){
 
 _cls_GradeAdministration0 _cls_inst = _cls_GradeAdministration0._get_cls_GradeAdministration0_inst();
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 2/*addCourse*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 2/*addCourse*/);
+_cls_inst._call(thisJoinPoint.getSignature().toString(), 2/*addGradeUpdated*/);
+_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 2/*addGradeUpdated*/);
 }
 }
 
-before ( double credits,Student studentInfo) : (call(* Student.addCredits(..)) && target(studentInfo) && args(credits) && !cflow(adviceexecution())) {
+before ( Clock _c, long millis) : (call(* Clock.event(long)) && args(millis) && target(_c)  && (if (_c.name.equals("dataDelay"))) && (if (millis == 5000)) && !cflow(adviceexecution())) {
 
 synchronized(_asp_GradeAdministration0.lock){
 
-_cls_GradeAdministration0 _cls_inst = _cls_GradeAdministration0._get_cls_GradeAdministration0_inst();
-_cls_inst.credits = credits;
-_cls_inst.studentInfo = studentInfo;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 6/*addCredits*/, 10/*changeCredits*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 6/*addCredits*/, 10/*changeCredits*/);
+synchronized(_c){
+ if (_c != null && _c._inst != null) {
+_c._inst._call(thisJoinPoint.getSignature().toString(), 4/*dataDelayAt5*/);
+_c._inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 4/*dataDelayAt5*/);
 }
 }
-
-before ( double credits,Student studentInfo) : (call(* Student.setCredits(..)) && target(studentInfo) && args(credits) && !cflow(adviceexecution())) {
-
-synchronized(_asp_GradeAdministration0.lock){
-
-_cls_GradeAdministration0 _cls_inst = _cls_GradeAdministration0._get_cls_GradeAdministration0_inst();
-_cls_inst.credits = credits;
-_cls_inst.studentInfo = studentInfo;
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 8/*setCredits*/, 10/*changeCredits*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 8/*setCredits*/, 10/*changeCredits*/);
-}
-}
-
-before () : (call(* *.run(..)) && !cflow(adviceexecution())) {
-
-synchronized(_asp_GradeAdministration0.lock){
-
-_cls_GradeAdministration0 _cls_inst = _cls_GradeAdministration0._get_cls_GradeAdministration0_inst();
-_cls_inst._call(thisJoinPoint.getSignature().toString(), 0/*programRun*/);
-_cls_inst._call_all_filtered(thisJoinPoint.getSignature().toString(), 0/*programRun*/);
 }
 }
 }

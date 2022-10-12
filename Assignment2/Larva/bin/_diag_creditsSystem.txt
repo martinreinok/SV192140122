@@ -1,0 +1,9 @@
+digraph _logic_creditsSystem {
+rankdir=LR;
+node [shape = circle]; okCredits;
+node [shape = octagon]; badState;
+node [shape = point]; _s_s;
+_s_s -> okCredits;
+okCredits -> badState [ label = "(1) changeCredits\\credits < 0 \\System . out . println ( \" Bad Credits! Credits less than 0. Amount:  \" + credits + \"  Student:  \" + s ) ; "];
+okCredits -> okCredits [ label = "(2) changeCredits\\credits >= 0 \\System . out . println ( \" Credits amount:  \" + credits + \"  Student:  \" + s ) ; "];
+}

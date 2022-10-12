@@ -1,6 +1,7 @@
 <aspectj>
 <aspects>
 <aspect name="aspects._asp_GradeAdministration0"/>
+<aspect name="aspects._asp_GradeAdministration1"/>
 </aspects>
 </aspectj>
 
