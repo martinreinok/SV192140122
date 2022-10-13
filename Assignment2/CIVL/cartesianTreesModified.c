@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <civlc.cvh>
 
-$input int max = 5;
+$input int max = 4;
 $input int n; // size of input array
 $input int inorder[n+1]; // input array from which the tree is derived
 $assume(0<=n && n<=max);
@@ -44,8 +44,7 @@ int minElementIndex(int inorder[], int start, int end) {
 			minIndex = i;
 		}
 	}
-	$assume(start+1 <= end);
-	$assert($forall(int j : start + 1 .. end) (inorder[minIndex] <= inorder[j]));	
+    $assert($forall(int j : start + 1 .. end) (inorder[minIndex] <= inorder[j]));  
 	return minIndex;
 }
 
@@ -58,7 +57,17 @@ struct Node* constructTree(int inorder[], int start, int end) {
 	struct Node *root = newNode(inorder[index]);
 	root->left = constructTree(inorder, start, index-1);
 	root->right = constructTree(inorder, index+1, end);
-	$assert(root->data < root->left->data && root->data < root->right->data, "Value at root: %d is not the smaller than children left: %d and right: %d", root->data , root->left->data, root->right->data);
+
+
+    if(root->left != 0){
+        /* If the child element exists */
+        $assert(root->data < root->left->data);
+    }
+    if(root->right != 0){
+        /* If the child element exists */
+        $assert(root->data <= root->right->data); // NB! <=
+    }
+
 	return root;
 }
 
@@ -76,6 +85,6 @@ int main() {
 	struct Node* root;
 	root = constructTree(inorder, 0, n);
 	printTree(root);
-  deleteTree(root);
+    deleteTree(root);
 	return 0;
 }
