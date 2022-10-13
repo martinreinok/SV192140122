@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <civlc.cvh>
 
-$input int max = 5;
+$input int max = 6;
 $input int n; // size of input array
 $input int inorder[n+1]; // input array from which the tree is derived
 $assume(0<=n && n<=max);
@@ -63,7 +63,6 @@ struct Node* constructTree(int inorder[], int start, int end) {
 	if(root->right != NULL){
 		$assert(root->data <= root->right->data, "Value at root not the smaller than children right");
 	}
-	//$assert(root->data < root->left->data && root->data < root->right->data, "Value at root: %d is not the smaller than children left: %d and right: %d", root->data , root->left->data, root->right->data);
 	return root;
 }
 
