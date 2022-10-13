@@ -58,7 +58,7 @@ struct Node* constructTree(int inorder[], int start, int end) {
 	struct Node *root = newNode(inorder[index]);
 	root->left = constructTree(inorder, start, index-1);
 	root->right = constructTree(inorder, index+1, end);
-	$assert(root->data <= root->left->data && root->data <= root->right->data, "Value at root: %d is not the smaller than children left: %d and right: %d", root->data , root->left->data, root->right->data);
+	$assert(root->data < root->left->data && root->data < root->right->data, "Value at root: %d is not the smaller than children left: %d and right: %d", root->data , root->left->data, root->right->data);
 	return root;
 }
 
