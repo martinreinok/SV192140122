@@ -26,6 +26,9 @@ int pop(int *output_arr) {
 	return 0;
 }
 
+/*@ 
+  
+*/
 
 int push(int data) {
 	int next;
