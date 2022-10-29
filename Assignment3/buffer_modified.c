@@ -10,7 +10,9 @@ int head = 0;
 int tail = 0;
 int const maxlen = 4;
 
-
+/*@
+assigns tail, *output_arr;
+*/
 int pop(int *output_arr) {
 	int next;
 	if (head == tail)
@@ -27,7 +29,7 @@ int pop(int *output_arr) {
 assigns head, buffer[head];
 
 behavior good:
-	requires head + 1 != tail;
+	requires (head + 1 < maxlen && head + 1 != tail) || (head + 1 >= maxlen && tail != 0);
 	ensures head == \old(head) + 1;
 	ensures \result == 0;
 
@@ -41,7 +43,7 @@ behavior bad:
 	ensures \result == -1;
 
 complete behaviors;
-disjoint behaviors good, bad;
+disjoint behaviors;
 */
 int push(int data) {
 	int next;
