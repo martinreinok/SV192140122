@@ -10,7 +10,7 @@ int head = 0;
 int tail = 0;
 int const maxlen = 4;
 
-/*@
+/*@ // Exercise I
 assigns tail, *output_arr;
 */
 int pop(int *output_arr) {
@@ -25,7 +25,7 @@ int pop(int *output_arr) {
 	return 0;
 }
 
-/*@
+/*@ // Exercise I
 assigns head, buffer[head];
 
 behavior good:
@@ -57,7 +57,11 @@ int push(int data) {
 	return 0;
 }
 
-/*@ assigns buffer; */
+/*@ // Exercise II
+requires maxlen >= 3;
+assigns buffer; 
+
+*/
 int main() {
 	int data[4];
 	buffer = data;
@@ -67,7 +71,11 @@ int main() {
 	push(a);
 	push(b);
 
-	/*@ loop assigns i, a, b; */
+	/*@ // Exercise II
+	loop assigns i, a, b; 
+	loop invariant i <= maxlen-1;
+	loop variant i;
+	*/
 	for (int i = 2; i < maxlen-1; i++) {
 		int sum = a + b;
 		if(push(sum)) {
@@ -78,5 +86,20 @@ int main() {
 		b = sum;
 	}
 
+	/*@ // Exercise II
+	loop assigns j, *out; 
+	loop invariant j <= maxlen-1;
+	loop variant j;
+	*/
+	for (int j = 0; j < maxlen-1; j++) {
+		if (pop(&out[j])) {
+			// Buffer is empty
+			return -1;
+		}
+	}
+
+	// Exercise III
+	// Wouldn't assert between tail and head be sufficient, why ghost variables ?
+	//@ assert head - 1 == tail;
 	return 0;
 }
