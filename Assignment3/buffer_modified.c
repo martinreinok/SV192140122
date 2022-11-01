@@ -26,6 +26,8 @@ int pop(int *output_arr) {
 }
 
 /*@ // Exercise I
+// requires \valid(buffer+(0..maxlen)); ????????
+// ensures head == \old(head) + 1;
 assigns head, buffer[head];
 
 behavior good:
@@ -57,9 +59,14 @@ int push(int data) {
 }
 
 /* // Exercise II
-requires maxlen >= 3 && \valid(buffer+(0..maxlen));
-assigns *buffer;
+assigns buffer; // this only works if \valid(buffer)... works
 
+*/
+
+/*
+WP will not attempt to prove the preconditions of the main function, 
+since it cannot make any assumption about its calling context.
+https://stackoverflow.com/questions/66867596/frama-c-wp-and-preconditions
 */
 int main() {
 	int data[4];
