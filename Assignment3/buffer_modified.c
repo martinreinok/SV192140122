@@ -29,21 +29,20 @@ int pop(int *output_arr) {
 assigns head, buffer[head];
 
 behavior good:
-	requires (head + 1 < maxlen && head + 1 != tail) || (head + 1 >= maxlen && tail != 0);
-	ensures head == \old(head) + 1;
+	assumes head + 1 < maxlen && head + 1 != tail || head + 1 >= maxlen && tail != 0;
 	ensures \result == 0;
 
 behavior reset_buffer:
-	requires head + 1 >= maxlen && tail != 0;
+	assumes head + 1 >= maxlen && tail != 0;
 	ensures head == 0;
 	ensures \result == 0;
 
 behavior bad:
-	requires (head + 1 < maxlen && head + 1 == tail) || (head + 1 >= maxlen && 0 == tail);
+	assumes (head + 1 < maxlen && head + 1 == tail) || (head + 1 >= maxlen && 0 == tail);
 	ensures \result == -1;
 
 complete behaviors;
-disjoint behaviors;
+disjoint behaviors good, bad;
 */
 int push(int data) {
 	int next;
@@ -57,9 +56,9 @@ int push(int data) {
 	return 0;
 }
 
-/*@ // Exercise II
-requires maxlen >= 3;
-assigns buffer; 
+/* // Exercise II
+requires maxlen >= 3 && \valid(buffer+(0..maxlen));
+assigns *buffer;
 
 */
 int main() {
@@ -71,7 +70,7 @@ int main() {
 	push(a);
 	push(b);
 
-	/*@ // Exercise II
+	/* // Exercise II
 	loop assigns i, a, b; 
 	loop invariant i <= maxlen-1;
 	loop variant i;
@@ -86,7 +85,7 @@ int main() {
 		b = sum;
 	}
 
-	/*@ // Exercise II
+	/* // Exercise II
 	loop assigns j, *out; 
 	loop invariant j <= maxlen-1;
 	loop variant j;
@@ -100,6 +99,6 @@ int main() {
 
 	// Exercise III
 	// Wouldn't assert between tail and head be sufficient, why ghost variables ?
-	//@ assert head - 1 == tail;
+	// assert head - 1 == tail;
 	return 0;
 }
