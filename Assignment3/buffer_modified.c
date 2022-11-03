@@ -10,8 +10,14 @@ int head = 0;
 int tail = 0;
 int const maxlen = 4;
 
+/*@ ghost
+    int ghost_head = 0;
+	int ghost_tail = 0;
+*/
+
 /*@ // Exercise I
-assigns tail, *output_arr;
+requires maxlen >= 0 && \valid(buffer+(0..maxlen));
+assigns tail, *output_arr, ghost_tail;
 */
 int pop(int *output_arr) {
 	int next;
@@ -22,13 +28,19 @@ int pop(int *output_arr) {
 		next = 0;
 	*output_arr = buffer[tail];
 	tail = next;
+	/*@ ghost
+        ghost_tail = tail;
+    */
+   	// Exercise IV
+	//@assert \forall integer i; 2 <= i < head && maxlen > 2 ==> buffer[head] == buffer[head-1] + buffer[head-2];
+
 	return 0;
 }
 
 /*@ // Exercise I
-// requires \valid(buffer+(0..maxlen)); ????????
-// ensures head == \old(head) + 1;
-assigns head, buffer[head];
+requires maxlen >= 0 && \valid(buffer+(0..maxlen));
+requires head < maxlen;
+assigns head, buffer[head], ghost_head;
 
 behavior good:
 	assumes head + 1 < maxlen && head + 1 != tail || head + 1 >= maxlen && tail != 0;
@@ -55,13 +67,14 @@ int push(int data) {
 		return -1; // buffer is full
 	buffer[head] = data;
 	head = next;
+	/*@ ghost
+        ghost_head = head;
+    */
+	// Exercise IV
+	//@assert \forall integer i; 2 <= i < head && maxlen > 2 ==> buffer[head] == buffer[head-1] + buffer[head-2];
+
 	return 0;
 }
-
-/* // Exercise II
-assigns buffer; // this only works if \valid(buffer)... works
-
-*/
 
 /*
 WP will not attempt to prove the preconditions of the main function, 
@@ -77,10 +90,10 @@ int main() {
 	push(a);
 	push(b);
 
-	/* // Exercise II
+	/*@ // Exercise II
+	loop invariant 2 <= i <= maxlen-1;	// Invariant holds during loop execution and after the execution.
 	loop assigns i, a, b; 
-	loop invariant i <= maxlen-1;
-	loop variant i;
+	loop variant maxlen-1 - i; 				// Variant proves the termination of the loop          
 	*/
 	for (int i = 2; i < maxlen-1; i++) {
 		int sum = a + b;
@@ -92,10 +105,10 @@ int main() {
 		b = sum;
 	}
 
-	/* // Exercise II
-	loop assigns j, *out; 
-	loop invariant j <= maxlen-1;
-	loop variant j;
+	/*@ // Exercise II
+	loop invariant 0 <= j <= maxlen-1;
+	loop assigns j, out[j]; 
+	loop variant  maxlen-1 - j;
 	*/
 	for (int j = 0; j < maxlen-1; j++) {
 		if (pop(&out[j])) {
@@ -105,7 +118,7 @@ int main() {
 	}
 
 	// Exercise III
-	// Wouldn't assert between tail and head be sufficient, why ghost variables ?
-	// assert head - 1 == tail;
+	//@ assert ghost_head - 1 == ghost_tail;
+	//@ assert head - 1 == tail;
 	return 0;
 }
