@@ -30,7 +30,7 @@ behavior bad:
 
 behavior reset_buffer:
 	assumes tail != head && tail + 1 >= maxlen;
-	ensures tail + 1 == maxlen ==> tail == 0;
+	ensures tail + 1 >= maxlen ==> tail == 0;
 	ensures *output_arr == buffer[\old(tail)];
 	ensures \result == 0;
 	
@@ -47,10 +47,6 @@ int pop(int *output_arr) {
 		next = 0;
 	*output_arr = buffer[tail];
 	tail = next;
-
-   	// Exercise IV
-	// assert \forall integer i; 2 <= i < head && maxlen > 0 ==> buffer[head] == buffer[head-1] + buffer[head-2];
-
 	return 0;
 }
 
@@ -73,7 +69,7 @@ behavior reset_buffer:
 	ensures \result == 0;
 
 behavior bad:
-	assumes (head + 1 < maxlen && head + 1 == tail) || (head + 1 >= maxlen && 0 == tail);
+	assumes (head + 1 < maxlen && head + 1 == tail) || (head + 1 >= maxlen && tail == 0);
 	ensures \result == -1;
 
 complete behaviors;
@@ -88,8 +84,6 @@ int push(int data) {
 		return -1; // buffer is full
 	buffer[head] = data;
 	head = next;
-	// Exercise IV
-	// assert \forall integer i; 2 <= i <= head && maxlen > 2 ==> buffer[head] == buffer[head-1] + buffer[head-2];
 
 	return 0;
 }
@@ -128,6 +122,7 @@ int main() {
 		}
 		a = b;
 		b = sum;
+		//@ assert buffer[head-1] == buffer[head-2] + buffer[head-3];
 	}
 
 	/*@
